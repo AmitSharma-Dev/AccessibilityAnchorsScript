@@ -1,0 +1,1329 @@
+
+
+
+
+******************************  /error.template.html  **************************************
+<a class="navbar-brand mr-auto" routerlink="home">
+        <img src="./../../../../assets/img/cup-logo.svg" class="brand-img" alt="{{ &apos;TEACHER._COMMON_ACROSS_PAGES.HEADER.SCREEN_READER.CAMBRDIGE_LOGO&apos; | translate }}">
+      </a>
+<a class="dropdown-toggle nav-link d-flex align-items-center justify-content-center" data-toggle="dropdown" href="javascript:void(0)" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+            <i class="nemo-font nemo-profile"></i>
+            </a>
+<a class="dropdown-item myProfileName d-flex align-items-center justify-content-center">
+              <i class="nemo-font nemo-profile"></i>
+              <span class="userName mx-1">{{userProfileData?.firstName}}</span>
+              <i class="fa fa-angle-up"></i>
+            </a>
+
+
+
+
+
+
+
+
+******************************  /invitation-dashboard.template.html  **************************************
+idsh-3
+<button type="submit" class="btn btn-main-1 btn-lg accept-button d-flex align-items-center my-3 mx-auto mr-md-0" qid="idsh-3" [disabled]="!invitationForm.valid || spinner.accept" [ngclass]="{&apos;disabled&apos; : !invitationForm.valid || spinner.accept || spinner.willDoLater }">
+                                        <span class="mr-2">{{ &apos;_COMMON_ACROSS_MODULES.INVITATION_DASHBOARD.ACCEPT&apos; | translate }}</span>
+                                        <i class="fa fa-spinner fa-spin" aria-hidden="true" *ngif="spinner.accept"></i>
+                                    </button>
+idsh-4
+<a [ngclass]="{disabled: spinner.accept || spinner.willDoLater}" class="later-link" qid="idsh-4" href="javascript:void(0)" (click)="navigateToDashboard()">
+                                        {{ &apos;_COMMON_ACROSS_MODULES.INVITATION_DASHBOARD.DO_LATER&apos; | translate }}
+                                        <i class="fa fa-angle-right" aria-hidden="true" *ngif="!spinner.willDoLater"></i>
+                                        <i class="fa fa-spinner fa-spin ml-1" aria-hidden="true" *ngif="spinner.willDoLater"></i>
+                                    </a>
+<div class="custom-control custom-checkbox select-all-checkbox">
+                                        <input type="checkbox" *ngif="selectAllState !== &apos;fewSelected&apos;" qid="idsh-1" class="custom-control-input" (click)="selectAllInvitationButton()" id="checkbox-bulkaction" [checked]="selectAllState === &apos;allSelected&apos;" name="isAllClassesSelect">
+                                        <i class="nemo-font nemo-select-all" *ngif="selectAllState === &apos;fewSelected&apos;" qid="idsh-1" aria-hidden="true" (click)="selectAllInvitationButton()"></i>
+                                        <label class="custom-control-label" *ngif="selectAllState !== &apos;fewSelected&apos;" for="checkbox-bulkaction">
+                                            <span class="sr-only">{{ &apos;_COMMON_ACROSS_MODULES.INVITATION_DASHBOARD.SELECT_ALL&apos; | translate }}</span>
+                                        </label>
+                                    </div> 
+
+
+******************************  /invitation-join-success.template.html  **************************************
+iscs-1
+<a target="_blank" [attr.href]="onboardingBaseUrl + &apos;help&apos;" qid="iscs-1">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_HELP_PAGE&apos; | translate }}</span>
+            </a>
+iscs-2
+<a href="javascript:void(0);" (click)="showLoader()" qid="iscs-2">
+                <i class="nemo-font nemo-cross" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_TEACHER_DASHBOARD&apos; | translate }}</span>
+            </a>
+iscs-3
+<button class="btn btn-lg btn-white-bg btn-icon mt-5" qid="iscs-3" *ngif="!isInvJoinedFromInvDashboard &amp;&amp; allPendingInvitaionsData?.length &gt; 0" [ngclass]="{&apos;disabled&apos; : loaders.dashboardPage || loaders.invitationsPage }" (click)="navigateToInvitationsPage()">
+                                    <span class="mr-3">{{ &apos;_COMMON_ACROSS_MODULES.INVITATION_JOIN_SUCCESS.VIEW_MORE_INVITES&apos; | translate }}</span><i class="fa fa-angle-right" *ngif="!loaders.invitationsPage" aria-hidden="true"></i>
+                                    <span *ngif="loaders.invitationsPage">
+                                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                                        <span class="sr-only">{{ &apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate }}</span>
+                                    </span>
+                                </button>
+iscs-3
+<button class="btn btn-lg btn-white-bg btn-icon mt-5" qid="iscs-3" *ngif="isInvJoinedFromInvDashboard" [ngclass]="{&apos;disabled&apos; : loaders.dashboardPage || loaders.invitationsPage }" (click)="navigateToDashboard()">
+                                    <span class="mr-3">{{ &apos;_COMMON_ACROSS_MODULES.INVITATION_JOIN_SUCCESS.GO_TO_DASHBOARD&apos; | translate }}</span><i class="fa fa-angle-right" *ngif="!loaders.dashboardPage" aria-hidden="true"></i>
+                                    <span *ngif="loaders.dashboardPage">
+                                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                                        <span class="sr-only">{{ &apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate }}</span>
+                                    </span>
+                                </button>
+iscs-4
+<a qid="iscs-4" class="navigationLink" href="javascript:void(0)" *ngif="!isInvJoinedFromInvDashboard" [ngclass]="{&apos;disabled&apos; : loaders.dashboardPage || loaders.invitationsPage }" (click)="navigateToDashboard()"> {{ &apos;_COMMON_ACROSS_MODULES.INVITATION_JOIN_SUCCESS.GO_TO_DASHBOARD&apos; | translate }}
+                                        <i class="fa fa-angle-right ml-3" *ngif="!loaders.dashboardPage" aria-hidden="true"></i>
+                                        <span *ngif="loaders.dashboardPage">
+                                            <i class="fa fa-spinner fa-spin ml-3" aria-hidden="true"></i>
+                                            <span class="sr-only">{{ &apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate }}</span>
+                                        </span>
+                                    </a>
+iscs-4
+<a qid="iscs-4" class="navigationLink" *ngif="isInvJoinedFromInvDashboard &amp;&amp; allPendingInvitaionsData?.length &gt; 0" href="javascript:void(0)" [ngclass]="{&apos;disabled&apos; : loaders.dashboardPage || loaders.invitationsPage }" (click)="navigateToInvitationsPage()">
+                                        <i class="fa fa-angle-left mr-3" *ngif="!loaders.invitationsPage" aria-hidden="true"></i>
+                                        <span *ngif="loaders.invitationsPage">
+                                            <i class="fa fa-spinner fa-spin mr-3" aria-hidden="true"></i>
+                                            <span class="sr-only">{{ &apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate }}</span>
+                                        </span>
+                                        {{ &apos;_COMMON_ACROSS_MODULES.INVITATION_JOIN_SUCCESS.VIEW_MORE_INVITATIONS&apos; | translate }}
+                                       
+                                    </a>
+
+
+
+
+******************************  /component-category.template.html  **************************************
+<a href="javascript:void(0)" class="practice-image d-flex align-items-center justify-content-center" (click)="navigateToClassView(bundleProduct)" [attr.aria-label]="&apos;LEARNER.DASHBOARD.SCREEN_READER.LAUNCH_PRODUCT&apos; | translate">
+									<img class="img-fluid" *ngif="bundleData.image" imagethumbnailupdate [productdata]="bundleData" [src]="isAbsoluteUrl(bundleData.image) ? bundleData.image :  bundleData.path + &apos;/&apos; + firstProduct.productcode + &apos;/&apos; + bundleData.image" [alt]="bundleData.title" aria-hidden="true">
+									<span class="img-color"></span>
+									<i class="img-icon" [ngclass]="bundleProduct.meta?.icon" *ngif="bundleProduct.meta?.icon != &apos;nemo-font nemo-collaboration-plus&apos; || bundleProduct.meta?.icon != &apos;nemo-font nemo-mock-test&apos;" aria-hidden="true"></i>
+									<img class="svg-icon" src="./../../../../assets/svg/collaborationPlus.svg" alt *ngif="bundleProduct.meta?.icon == &apos;nemo-font nemo-collaboration-plus&apos;">
+									<img class="svg-icon" src="./../../../../assets/svg/mock-test.svg" alt *ngif="bundleProduct.meta?.icon == &apos;nemo-font nemo-mock-test&apos;">
+								</a>
+'go-'+i
+<a class="see-progress pt-2" qid="&apos;go-&apos;+i" href="javascript:void(0)" (click)="navigateToClassView(bundleProduct,space,spaceClass)">
+									<i aria-hidden="true" class="fa fa-long-arrow-right"></i>
+									{{ &apos;LEARNER.DASHBOARD.GO&apos; | translate }}
+								</a>
+<a href="javascript:void(0)" class="practice-image d-flex align-items-center justify-content-center" (click)="navigateToView(product)" [attr.aria-label]="&apos;LEARNER.DASHBOARD.SCREEN_READER.LAUNCH_PRODUCT&apos; | translate">
+									<img class="img-fluid" *ngif="firstPrivateBundleProduct?.bundles &amp;&amp; firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].image" imagethumbnailupdate [productdata]="firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct.meta[&apos;bundle-codes&apos;][0]]" [src]="isAbsoluteUrl(firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].image) ? firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].image :  firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].path + &apos;/&apos; + firstPrivateBundleProduct?.productcode + &apos;/&apos; + firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].image" [alt]="firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].title" aria-hidden="true">
+									<span class="img-color"></span>
+									<i class="img-icon" [ngclass]="product.bundleMetaData?.meta?.icon" *ngif="product.bundleMetaData?.meta?.icon != &apos;nemo-font nemo-collaboration-plus&apos; || product.bundleMetaData?.meta?.icon != &apos;nemo-font nemo-mock-test&apos;" aria-hidden="true"></i>
+									<img class="svg-icon" src="./../../../../assets/svg/collaborationPlus.svg" alt *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-collaboration-plus&apos;">
+									<img class="svg-icon" src="./../../../../assets/svg/mock-test.svg" alt *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-mock-test&apos;">
+									<img class="svg-icon" src="./../../../../assets/svg/reading-negative.svg" alt *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-reading-negative&apos;">
+									<img class="svg-icon" src="./../../../../assets/svg/listening-negative.svg" alt *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-listening-negative&apos;">
+									<img class="svg-icon" src="./../../../../assets/svg/writing-negative.svg" alt *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-writing-negative&apos;">
+									<img class="svg-icon" src="./../../../../assets/svg/speaking-negative.svg" alt *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-speaking-negative&apos;">
+								</a>
+'go-'+i
+<a class="see-progress pt-2" qid="&apos;go-&apos;+i" href="javascript:void(0)" (click)="navigateToView(product)">
+									<i aria-hidden="true" class="fa fa-long-arrow-right"></i>
+									{{ &apos;LEARNER.DASHBOARD.GO&apos; | translate }}
+								</a>
+
+
+******************************  /dashboard.template.html  **************************************
+<a class="btn add-button btn-main-color-1-bordered product-add" [routerlink]="[&apos;./../startlearning/addMaterial&apos;]">
+                            <i class="fa fa-plus"></i>{{ &apos;LEARNER.DASHBOARD.PRODUCT&apos; | translate }} </a>
+<a class="btn add-button btn-main-color-1-bordered" [routerlink]="[&apos;./../startlearning/addClass&apos;]" [queryparams]="{ activatingClass : true }">
+                            <i class="fa fa-plus"></i>{{ &apos;LEARNER.DASHBOARD.CLASS&apos; | translate }} </a>
+'dashboard-help-' + j+'-'+i
+<a class="understanding-help mt-2" [attr.qid]="&apos;dashboard-help-&apos; + j+&apos;-&apos;+i" href="javascript:void(0)" (click)="navigateToHelp(&apos;learner&apos;,&apos;Nineteen&apos;)">
+                                                <i aria-hidden="true" class="fa fa-question-circle mr-1"></i>
+                                                <span class="understanding-text d-none d-sm-inline">
+                                                    {{&apos;LEARNER.DASHBOARD.UNDERSTANDING_HELP&apos; | translate}} 
+                                                </span>
+                                            </a>
+<a href="javascript:void(0)" class="product-image d-flex align-items-center justify-content-center purple-background" [ngclass]="{&apos;disabled&apos; : !spaceClass.isBundleActivated }" (click)="navigateToLearnerClassView(space,spaceClass)" [attr.aria-label]="&apos;LEARNER.DASHBOARD.MY_PROGRESS&apos; | translate">
+                                                            <img class="img-fluid progress-icon" *ngif="!isBulkAnalyticsNeeded || !spaceClass.isDisplayAnalytics" src="./../../../../assets/svg/progress-icon.svg" [alt]="bundleData.title" aria-hidden="true">
+                                                            <div class="analytics-circle-container" *ngif="isBulkAnalyticsNeeded &amp;&amp; spaceClass.isDisplayAnalytics">
+                                                                <div class="analytics-circle" [class.primary-segment]="spaceClass.displaySegment === &apos;primary&apos;">
+                                                                    <div class="c100 p100 grey">
+                                                                        <div class="slice">
+                                                                            <div class="bar"></div>
+                                                                            <div class="fill"></div>
+                                                                        </div>
+                                                                    </div>
+																	<ng-container *ngif="spaceClass.isRewardsTypeClass else nonRewardClassContainer">
+	                                                                    <div class="c100 dark-yellow" *ngif="spaceClass.__analytics" [ngclass]="[spaceClass ? (&apos;p&apos;+ ((spaceClass.__analytics?.itemsCount.completedOnceTestAndContributeCompletion/spaceClass?.__analytics?.itemsCount?.contributeCompletion*100 | number:&apos;1.0-0&apos;))) : &apos;&apos;]">
+	                                                                        <div class="slice">
+	                                                                            <div class="bar"></div>
+	                                                                            <div class="fill"></div>
+	                                                                        </div>
+	                                                                    </div>
+	                                                                </ng-container>
+	                                                                <ng-template #nonrewardclasscontainer>
+	                                                                    <div class="c100 light-yellow" *ngif="spaceClass.__analytics" [ngclass]="[spaceClass ? (&apos;p&apos;+ (((spaceClass?.__analytics?.itemsCount?.completedOnceTestAndContributeCompletion)/spaceClass?.__analytics?.itemsCount?.contributeCompletion*100 | number:&apos;1.0-0&apos;))) : &apos;&apos;]">
+	                                                                        <div class="slice">
+	                                                                            <div class="bar">
+	                                                                                <img alt>
+	                                                                                <div class="overlay-circle"></div>
+	                                                                            </div>
+	                                                                            <div class="fill">
+	                                                                                <img *ngif="(((spaceClass?.__analytics?.itemsCount?.completedOnceTestAndContributeCompletion)/spaceClass?.__analytics?.itemsCount?.contributeCompletion*100 ))  &gt; 50" alt>
+	                                                                                <div class="overlay-circle" *ngif="(((spaceClass?.__analytics?.itemsCount?.completedOnceTestAndContributeCompletion)/spaceClass?.__analytics?.itemsCount?.contributeCompletion*100)) &gt; 50"></div>
+	                                                                            </div>
+	                                                                        </div>
+	                                                                    </div>
+	                                                                    <div class="c100 dark-yellow" *ngif="spaceClass.__analytics" [ngclass]="[spaceClass ? (&apos;p&apos;+ ((spaceClass.__analytics?.itemsCount.completedWithSuccessTestAndContributeCompletion/spaceClass?.__analytics?.itemsCount?.contributeCompletion*100 | number:&apos;1.0-0&apos;))) : &apos;&apos;]">
+	                                                                        <div class="slice">
+	                                                                            <div class="bar"></div>
+	                                                                            <div class="fill"></div>
+	                                                                        </div>
+                                                                    </div>
+																	</ng-template>
+                                                                </div>
+                                                            </div>
+                                                            <div class="analytic-result" *ngif="isBulkAnalyticsNeeded &amp;&amp; spaceClass.isDisplayAnalytics">
+                                                                <p *ngif="spaceClass.__analytics &amp;&amp; spaceClass.__analytics?.itemsCount &amp;&amp; !spaceClass.isRewardsTypeClass" aria-hidden="true">
+                                                                    <strong>{{spaceClass.__analytics?.itemsCount?.completedAndContributeCompletion}}</strong><span>/{{spaceClass.__analytics?.itemsCount?.contributeCompletion}}</span>
+                                                                </p>
+                                                            </div>
+                                                        </a>
+ldashboard-4
+<a href="javascript:void(0)" class="assignment-image d-flex align-items-center justify-content-center" [attr.aria-label]="(spaceClass.areAssignmentsHomework?&apos;LEARNER.DASHBOARD.HOMEWORK&apos;:&apos;LEARNER.DASHBOARD.ASSIGNMENTS&apos;) | translate" qid="ldashboard-4" (click)="navigateToAssignmentView(space,spaceClass)">
+                                                            <img class="img-fluid" *ngif="bundleData.image" [src]="isAbsoluteUrl(bundleData.image) ? bundleData.image :  bundleData.path + &apos;/&apos; + firstProduct.productcode + &apos;/&apos; + bundleData.image" [alt]="bundleData.title" aria-hidden="true" imagethumbnailupdate [productdata]="bundleData">
+                                                            <span class="img-color"></span>
+                                                            <div class="d-flex align-items-center justify-content-center assignment-icon-container">
+                                                                <i class="nemo-font nemo-assignment" aria-hidden="true"></i>
+                                                                <span class="assignment-count" *ngif="spaceClass?.dueAssignmentCount&gt;0" aria-hidden="true">{{spaceClass?.dueAssignmentCount}}</span>
+                                                            </div>
+                                                            <div class="img-overlay"></div>
+                                                        </a>
+<a href="javascript:void(0)" class="practice-image d-flex align-items-center justify-content-center" [ngclass]="{&apos;disabled&apos; : !bundleProduct.isProductActivated &amp;&amp; bundleProduct.type !== &apos;category&apos;}" (click)="navigateToClassView(bundleProduct,space,spaceClass)" [attr.aria-label]="&apos;LEARNER.DASHBOARD.SCREEN_READER.LAUNCH_PRODUCT&apos; | translate">
+                                                                    <img class="img-fluid" *ngif="bundleData.image" imagethumbnailupdate [productdata]="bundleData" [src]="isAbsoluteUrl(bundleData.image) ? bundleData.image :  bundleData.path + &apos;/&apos; + firstProduct.productcode + &apos;/&apos; + bundleData.image" [alt]="bundleData.title" aria-hidden="true">
+                                                                    <span class="img-color"></span>
+                                                                    <i class="img-icon" [ngclass]="bundleProduct[&apos;ext-product&apos;].type != &apos;imgbook&apos; ? bundleProduct.meta?.icon : &apos;nemo-font nemo-presentation&apos;" *ngif="bundleProduct.meta?.icon != &apos;nemo-font nemo-collaboration-plus&apos; || bundleProduct.meta?.icon != &apos;nemo-font nemo-mock-test&apos;" aria-hidden="true"></i>
+                                                                    <img class="svg-icon" src="./../../../../assets/svg/collaborationPlus.svg" *ngif="bundleProduct.meta?.icon == &apos;nemo-font nemo-collaboration-plus&apos;">
+                                                                    <img class="svg-icon" src="./../../../../assets/svg/mock-test.svg" alt *ngif="bundleProduct.meta?.icon == &apos;nemo-font nemo-mock-test&apos;">
+                                                                    <!--<div class="bottom-space"></div>-->
+                                                                </a>
+'ldashboard-5-' + j + '-' + i
+<a href="javascript:void(0)" class="practice-image d-flex align-items-center justify-content-center" [attr.qid]="&apos;ldashboard-5-&apos; + j + &apos;-&apos; + i" (click)="navigateToShowcase(space,spaceClass)">
+                                                                    <img class="img-fluid" *ngif="bundleData.image" imagethumbnailupdate [productdata]="bundleData" [src]="isAbsoluteUrl(bundleData.image) ? bundleData.image :  bundleData.path + &apos;/&apos; + firstProduct.productcode + &apos;/&apos; + bundleData.image" [alt]="bundleData.title" aria-hidden="true">
+                                                                    <span class="img-color"></span>
+                                                                    <img class="svg-icon" src="./../../../../assets/svg/showcase.svg">
+                                                                    <!--<div class="bottom-space"></div>-->
+                                                                </a>
+ldashboard-1
+<a class="see-progress pt-1" qid="ldashboard-1" (click)="navigateToLearnerClassView(space,spaceClass)" href="javascript:void(0)">
+                                                            <i aria-hidden="true" class="fa fa-long-arrow-right"></i>
+                                                            {{&apos;LEARNER.DASHBOARD.SEE_PROGRESS&apos; | translate}}
+                                                        </a>
+ldashboard-3
+<a class="see-progress pt-1" qid="ldashboard-3" href="javascript:void(0)" (click)="navigateToAssignmentView(space,spaceClass)">
+                                                            <i aria-hidden="true" class="fa fa-long-arrow-right"></i>
+                                                            {{ &apos;LEARNER.DASHBOARD.GO&apos; | translate }}
+                                                        </a>
+dashboard-help-0
+<a class="understanding-help mt-2" qid="dashboard-help-0" href="javascript:void(0)" (click)="navigateToHelp(&apos;learner&apos;,&apos;Nineteen&apos;)">
+                                <i aria-hidden="true" class="fa fa-question-circle mr-1"></i>
+                                <span class="understanding-text d-none d-sm-inline">
+                                    {{&apos;LEARNER.DASHBOARD.UNDERSTANDING_HELP&apos; | translate}} 
+                                </span>
+                            </a>
+<a href="javascript:void(0)" class="product-image d-flex align-items-center justify-content-center purple-background" (click)="firstPrivateBundleProduct.bundles[ieltsBundleCode] ? navigateToIelts(firstPrivateBundleProduct) : navigateToLearnerView(firstPrivateBundleProduct)" [attr.aria-label]="&apos;LEARNER.DASHBOARD.MY_PROGRESS&apos; | translate">
+                                                <img class="img-fluid progress-icon" *ngif="!isBulkAnalyticsNeeded || !firstPrivateBundleProduct.isDisplayAnalytics || firstPrivateBundleProduct.bundles[ieltsBundleCode]" src="./../../../../assets/svg/progress-icon.svg" [alt]="firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].title" aria-hidden="true">
+                                                <div class="analytics-circle-container" *ngif="isBulkAnalyticsNeeded &amp;&amp; firstPrivateBundleProduct.isDisplayAnalytics &amp;&amp; !firstPrivateBundleProduct.bundles[ieltsBundleCode]">
+                                                    <div class="analytics-circle" [class.primary-segment]="firstPrivateBundleProduct.displaySegment === &apos;primary&apos;">
+                                                        <div class="c100 p100 grey">
+                                                            <div class="slice">
+                                                                <div class="bar"></div>
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+														<ng-container *ngif="firstPrivateBundleProduct?.isRewardsTypeProduct else nonRewardContainer">
+	                                                        <div class="c100 dark-yellow" *ngif="firstPrivateBundleProduct.__analytics" [ngclass]="[firstPrivateBundleProduct ? (&apos;p&apos;+ ((firstPrivateBundleProduct.__analytics?.itemsCount.completedOnceTestAndContributeCompletion/firstPrivateBundleProduct?.__analytics?.itemsCount?.contributeCompletion*100 | number:&apos;1.0-0&apos;))) : &apos;&apos;]">
+	                                                            <div class="slice">
+	                                                                <div class="bar"></div>
+	                                                                <div class="fill"></div>
+	                                                            </div>
+	                                                        </div>
+	                                                    </ng-container>
+                                                    <ng-template #nonrewardcontainer>
+                                                        <div class="c100 light-yellow" *ngif="firstPrivateBundleProduct.__analytics" [ngclass]="[firstPrivateBundleProduct ? (&apos;p&apos;+ (((firstPrivateBundleProduct?.__analytics?.itemsCount?.completedOnceTestAndContributeCompletion)/firstPrivateBundleProduct?.__analytics?.itemsCount?.contributeCompletion*100 | number:&apos;1.0-0&apos;))) : &apos;&apos;]">
+                                                            <div class="slice">
+                                                                <div class="bar">
+                                                                    <img alt>
+                                                                    <div class="overlay-circle"></div>
+                                                                </div>
+                                                                <div class="fill">
+                                                                    <img *ngif="(((firstPrivateBundleProduct?.__analytics?.itemsCount?.completedOnceTestAndContributeCompletion)/firstPrivateBundleProduct?.__analytics?.itemsCount?.contributeCompletion*100 ))  &gt; 50" alt>
+                                                                    <div class="overlay-circle" *ngif="(((firstPrivateBundleProduct?.__analytics?.itemsCount?.completedOnceTestAndContributeCompletion)/firstPrivateBundleProduct?.__analytics?.itemsCount?.contributeCompletion*100)) &gt; 50"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="c100 dark-yellow" *ngif="firstPrivateBundleProduct.__analytics" [ngclass]="[firstPrivateBundleProduct ? (&apos;p&apos;+ ((firstPrivateBundleProduct.__analytics?.itemsCount.completedWithSuccessTestAndContributeCompletion/firstPrivateBundleProduct?.__analytics?.itemsCount?.contributeCompletion*100 | number:&apos;1.0-0&apos;))) : &apos;&apos;]">
+                                                            <div class="slice">
+                                                                <div class="bar"></div>
+                                                                <div class="fill"></div>
+                                                            </div>
+                                                        </div>
+                                                    </ng-template>
+                                                    </div>
+                                                </div>
+                                                <div class="analytic-result" *ngif="isBulkAnalyticsNeeded &amp;&amp; firstPrivateBundleProduct.isDisplayAnalytics &amp;&amp; !firstPrivateBundleProduct.bundles[ieltsBundleCode]">
+                                                    <p *ngif="firstPrivateBundleProduct.__analytics &amp;&amp; firstPrivateBundleProduct.__analytics?.itemsCount &amp;&amp; !firstPrivateBundleProduct?.isRewardsTypeProduct" aria-hidden="true">
+                                                        <strong>{{firstPrivateBundleProduct.__analytics?.itemsCount?.completedAndContributeCompletion}}</strong><span>/{{firstPrivateBundleProduct.__analytics?.itemsCount?.contributeCompletion}}</span>
+                                                    </p>
+                                                </div>
+                                            </a>
+ldashboard-2
+<a class="see-progress pb-3 pt-1" (click)="firstPrivateBundleProduct.bundles[ieltsBundleCode] ? navigateToIelts(firstPrivateBundleProduct) : navigateToLearnerView(firstPrivateBundleProduct)" qid="ldashboard-2" href="javascript:void(0);">
+                                                <i aria-hidden="true" class="fa fa-long-arrow-right"></i>
+                                                {{&apos;LEARNER.DASHBOARD.SEE_PROGRESS&apos; | translate}}
+                                            </a>
+<a href="javascript:void(0)" class="practice-image d-flex align-items-center justify-content-center" (click)="!firstPrivateBundleProduct.bundles[ieltsBundleCode] ? navigateToView(product) : false" [attr.aria-label]="&apos;LEARNER.DASHBOARD.SCREEN_READER.LAUNCH_PRODUCT&apos; | translate" [ngclass]="{&apos;ielts-product&apos;: firstPrivateBundleProduct.bundles[ieltsBundleCode]}">
+                                                    <img class="img-fluid" *ngif="firstPrivateBundleProduct?.bundles &amp;&amp; firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].image" imagethumbnailupdate [productdata]="firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct.meta[&apos;bundle-codes&apos;][0]]" [src]="isAbsoluteUrl(firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].image) ? firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].image :  firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].path + &apos;/&apos; + firstPrivateBundleProduct?.productcode + &apos;/&apos; + firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].image" [alt]="firstPrivateBundleProduct?.bundles[firstPrivateBundleProduct?.meta[&apos;bundle-codes&apos;][0]].title" aria-hidden="true">
+                                                    <span class="img-color"></span>
+                                                    <i class="img-icon" [ngclass]="product[&apos;ext-product&apos;].type != &apos;imgbook&apos; ? product.bundleMetaData?.meta?.icon : &apos;nemo-font nemo-presentation&apos;" *ngif="product.bundleMetaData?.meta?.icon != &apos;nemo-font nemo-collaboration-plus&apos; || product.bundleMetaData?.meta?.icon != &apos;nemo-font nemo-mock-test&apos;" aria-hidden="true"></i>
+                                                    <img class="svg-icon" src="./../../../../assets/svg/collaborationPlus.svg" *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-collaboration-plus&apos;">
+                                                    <img class="svg-icon" src="./../../../../assets/svg/mock-test.svg" alt *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-mock-test&apos;">
+                                                    <!--<div class="bottom-space"></div>-->
+                                                    <img class="svg-icon" src="./../../../../assets/svg/reading-negative.svg" *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-reading-negative&apos;">
+                                                    <img class="svg-icon" src="./../../../../assets/svg/listening-negative.svg" *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-listening-negative&apos;">
+                                                    <img class="svg-icon" src="./../../../../assets/svg/writing-negative.svg" *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-writing-negative&apos;">
+                                                    <img class="svg-icon" src="./../../../../assets/svg/speaking-negative.svg" *ngif="product.bundleMetaData?.meta?.icon == &apos;nemo-font nemo-speaking-negative&apos;">
+                                                </a>
+<a class="btn btn-lg btn-main-1 btn-start-learning" href="javascript:void(0)" (click)="navigateToStartLearningWizard()">
+                        <i class="nemo-font nemo-play-brain text-uppercase" aria-hidden="true"></i>
+                        {{ &apos;LEARNER.DASHBOARD.&apos;+currentTheme.name+&apos;.START_LEARNING&apos; | translate }}
+                    </a>
+
+
+
+
+
+
+******************************  /start-learning-class-key-success.template.html  **************************************
+<button type="submit" [ngclass]="{&apos;submit-loader-btn&apos; : showClassCheckLoader}" class="btn btn-lg btn-white-bg btn-icon mb-5 mt-2 submit-class-key" (click)="navigateToDashboard()">
+             {{&apos;LEARNER.STARTLEARNINGCLASSKEYSUCCESS.LEARN&apos; | translate}}
+            <i class="fa fa-angle-right" *ngif="!showClassCheckLoader" aria-hidden="true"></i>
+            <span *ngif="showClassCheckLoader">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+            </span>
+        </button>
+
+
+******************************  /start-learning-code-success.template.html  **************************************
+<a *ngif="!firstTime || firstTime == &apos;true&apos;" class="btn btn-lg btn-white-bg btn-icon mb-5 mt-3" (click)="navigateToEnterClassKeyFlow()" href="javascript:void(0);">{{&apos;LEARNER.STARTLEARNINGCODESUCCESS.NEXT&apos; | translate}} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+<button *ngif="firstTime == &apos;false&apos;" class="btn btn-lg btn-white-bg btn-icon mb-2 mt-3" (click)="navigateToDashboard()">
+            <span *ngif="activatingProduct === &apos;true&apos;">{{&apos;LEARNER.STARTLEARNINGCODESUCCESS.LEARN&apos; | translate}}</span>
+            <span *ngif="activatingProduct !== &apos;true&apos;">{{&apos;LEARNER.STARTLEARNINGCODESUCCESS.LEARN_ON_MY_OWN&apos; | translate}}</span> 
+            <i class="fa fa-angle-right" *ngif="!showLearnOwnLoader" aria-hidden="true"></i>
+            <span *ngif="showLearnOwnLoader">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+            </span>
+        </button>
+
+
+******************************  /start-learning-enter-class-key.template.html  **************************************
+<button type="submit" [ngclass]="{&apos;submit-loader-btn&apos; : showClassKeyCheckLoader, &apos;disabled&apos; : activateClassKeyForm.invalid || showOwnLearningLoader || showClassKeyCheckLoader }" class="btn btn-lg btn-white-bg btn-icon submit-class-key" [attr.aria-disabled]="activateClassKeyForm.invalid  || showOwnLearningLoader || showClassKeyCheckLoader">
+                        {{&apos;LEARNER.STARTLEARNINGENTERCLASSKEY.JOIN&apos; | translate}} <i class="fa fa-angle-right" *ngif="!showClassKeyCheckLoader" aria-hidden="true"></i>
+                        <span *ngif="showClassKeyCheckLoader">
+                            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                            <span class="sr-only">{{&apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate}}</span>
+                        </span>
+                    </button>
+<div class="input-group">
+                        <input autocomplete="off" [(ngmodel)]="classKeyInputValue" (ngmodelchange)="addhHiphens($event)" type="text" #classkey="ngModel" required name="classKey" class="form-control form-control-lg" [ngclass]="{&apos;error&apos;: classKeyError }" id="classKeyInput" [attr.aria-label]=" &apos;LEARNER.STARTLEARNINGENTERCLASSKEY.SCREEN_READER.ENTER_CLASS_KEY_TO_JOIN_CLASS&apos; | translate" [attr.placeholder]=" &apos;LEARNER.STARTLEARNINGENTERCLASSKEY.SCREEN_READER.ENTER_CLASS_KEY_TO_JOIN_CLASS&apos; | translate">
+                        <div class="input-group-append" *ngif="classKeyError">
+                            <span class="input-group-text error"><i class="nemo-error-icon nemo-font nemo-warning" aria-hidden="true"></i></span>
+                        </div>
+                    </div> 
+
+
+******************************  /start-learning-enter-code.template.html  **************************************
+<button type="submit" [ngclass]="{&apos;submit-loader-btn&apos; : showActivationCodeCheckLoader, &apos;disabled&apos; : activateCodeForm.invalid || showActivationCodeCheckLoader}" class="btn btn-lg btn-white-bg btn-icon submit-activation-code" [attr.aria-disabled]="activateCodeForm.invalid || showActivationCodeCheckLoader">
+                        {{&apos;LEARNER.STARTLEARNINGENTERCODE.ACTIVATE&apos; | translate}} <i class="fa fa-angle-right" *ngif="!showActivationCodeCheckLoader" aria-hidden="true"></i>
+                        <span *ngif="showActivationCodeCheckLoader">
+                            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                            <span class="sr-only">{{&apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate}}</span>
+                        </span>
+                    </button>
+<div class="input-group">
+                        <input autocomplete="off" [(ngmodel)]="activationCodeValue" (ngmodelchange)="addhHiphens($event)" type="text" #activationcode="ngModel" required name="activationCode" class="form-control form-control-lg" [ngclass]="{&apos;error&apos;: isActivationCodeError}" id="activationCodeInput" [attr.aria-label]="&apos;LEARNER.STARTLEARNINGENTERCODE.SCREEN_READER.ENTER_ACTIVATION_CODE_GIVEN_IN_BOOK&apos; | translate" [attr.placeholder]="&apos;LEARNER.STARTLEARNINGENTERCODE.SCREEN_READER.ENTER_ACTIVATION_CODE_GIVEN_IN_BOOK&apos; | translate">
+                        <div class="input-group-append" *ngif="isActivationCodeError">
+                            <span class="input-group-text error"><i class="nemo-error-icon nemo-font nemo-warning" aria-hidden="true"></i></span>
+                        </div>
+                    </div> 
+
+
+
+
+******************************  /start-learning-no-class-key.template.html  **************************************
+<button class="btn btn-lg btn-icon btn-white-bg mb-5 mt-3" [ngclass]="{&apos;disabled&apos; : showOwnLearningLoader}" (click)="navigateToDashboardOrProductAdd($event)" [attr.aria-disabled]="showOwnLearningLoader">
+             {{ &apos;LEARNER.STARTLEARNINGNOCLASSKEY.OK_LEARN_ON_MY_OWN&apos; | translate }} <i class="fa fa-angle-right" *ngif="!showOwnLearningLoader"></i>
+            <span *ngif="showOwnLearningLoader">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate }}</span>
+            </span>
+        </button>
+
+
+******************************  /start-learning-no-code.template.html  **************************************
+<a class="btn btn-lg btn-icon btn-white-bg mb-5 mt-3 " [routerlink]="[&apos;./../../dashboard&apos;]">{{ &apos;LEARNER.STARTLEARNINGNOCODE.ACTIVATE_LATER&apos; | translate }} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+
+
+******************************  /start-learning-study-options.template.html  **************************************
+<a class="d-block learning-button" (click)="navigateToEnterClassKey()">
+        <i class="nemo-font nemo-teachers page-icon" aria-hidden="true"></i>
+        <h2 class="heading2">{{ &apos;LEARNER.STARTLEARNINGSTUDYOPTIONS.LEARNING_AS_CLASS&apos; | translate }}</h2>
+    </a>
+<button (click)="provisionSpaceUsingProductISBN($event)" class="d-block learning-button" [attr.aria-disabled]="showOwnLearningLoader" [ngclass]="{&apos;disabled&apos;: showOwnLearningLoader || isactivateLaterAvailable == &apos;false&apos;}">
+        <h2 class="heading2"> {{ &apos;LEARNER.STARTLEARNINGSTUDYOPTIONS.LEARNING_ON_MY_OWN&apos; | translate }}</h2>
+        <i class="nemo-font nemo-learner page-icon" *ngif="!showOwnLearningLoader" aria-hidden="true"></i>
+        <span *ngif="showOwnLearningLoader">
+            <i class="fa fa-spinner fa-spin page-icon" aria-hidden="true"></i>
+            <span class="sr-only">{{ &apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate }}</span>
+        </span>
+    </button>
+
+
+******************************  /start-learning.template.html  **************************************
+<a target="_blank" [attr.href]="onboardingBaseUrl + &apos;help&apos;">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <span class="sr-only">{{&apos;SCREEN_READER.GO_TO_HELP_PAGE&apos; | translate}}</span>
+            </a>
+<a href="javascript:void(0);" (click)="showLoader()" *ngif="firstTime==&apos;false&apos;"> 
+                <i class="nemo-font nemo-cross" aria-hidden="true"></i>
+                <span class="sr-only">{{&apos;LEARNER._COMMON_ACROSS_PAGES.HEADER.GO_TO_LEARNER_DASHBOARD_PAGE&apos; | translate}}</span>
+            </a>
+
+
+******************************  /activate-material-for-child.template.html  **************************************
+p-act-material-1
+<a target="_blank" [attr.href]="onboardingBaseUrl + &apos;help&apos;" qid="p-act-material-1">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_HELP_PAGE&apos; | translate }}</span>
+            </a>
+p-act-material-2
+<a href="javascript:void(0);" (click)="navigateBack()" qid="p-act-material-2" #close>
+                <i class="nemo-font nemo-cross" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_PARENT_DASHBOARD&apos; | translate }}</span>
+            </a>
+<button type="submit" [ngclass]="{&apos;submit-loader-btn&apos; : showActivationKeyCheckLoader, &apos;disabled&apos; : activateProductForm.invalid }" class="btn btn-main-color-1-bordered add-button d-flex align-items-center justify-content-center" [attr.aria-disabled]="activateProductForm.invalid || showActivationKeyCheckLoader">
+                                        {{&apos;PARENT.ACTIVATE.ACTIVATE_MATERIAL&apos; | translate }}
+                                        <i class="fa fa-angle-right" *ngif="!showActivationKeyCheckLoader" aria-hidden="true"></i>
+                                        <span *ngif="showActivationKeyCheckLoader">
+                                            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                                            <span class="sr-only">{{&apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate}}</span>
+                                        </span>
+                                    </button>
+p-act-material-5
+<a href="javascript:void(0);" *ngif="!isNewChild" class="btn btn-main-color-1-bordered text-center add-button d-flex align-items-center justify-content-center enabled" (click)="navigateToDashboard()" qid="p-act-material-5" role="button">
+                                {{&apos;PARENT.ACTIVATE.BACK_TO_DASHBOARD&apos; | translate }}
+                                <i class="fa fa-angle-right ml-2 font-weight-bold"></i>
+                            </a>
+p-act-material-6
+<a href="javascript:void(0);" *ngif="isNewChild" class="btn btn-main-color-1-bordered next-button add-button align-items-center justify-content-center enabled" (click)="goToJoinClass()" qid="p-act-material-6" role="button">
+                                {{&apos;PARENT.ACTIVATE.JOIN_CLASS&apos; | translate }}
+                                <i class="fa fa-angle-right ml-2 font-weight-bold"></i>
+                            </a>
+<div class="input-group">
+                                        <input autocomplete="off" [(ngmodel)]="activationCode" (ngmodelchange)="addhHiphens($event)" type="text" #classkey="ngModel" required name="activationCode" class="form-control prduct-key-input" [ngclass]="{&apos;error&apos;: activationCodeError.value }" id="ActivationKeyInput" [attr.aria-label]=" &apos;PARENT.ACTIVATE.SCREEN_READER.ENTER_ACTIVATION_CODE_GIVEN_IN_BOOK&apos; | translate" [attr.placeholder]=" &apos;PARENT.ACTIVATE.SCREEN_READER.ENTER_ACTIVATION_CODE_GIVEN_IN_BOOK&apos; | translate">
+                                        <div class="input-group-append" *ngif="activationCodeError.value">
+                                            <span class="input-group-text error">
+                                                <i class="nemo-error-icon nemo-font nemo-warning" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                    </div> 
+
+
+******************************  /child-success.template.html  **************************************
+p-class-success-1
+<a target="_blank" [attr.href]="onboardingBaseUrl + &apos;help&apos;" qid="p-class-success-1">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_HELP_PAGE&apos; | translate }}</span>
+            </a>
+p-class-success-2
+<a href="javascript:void(0);" (click)="navigateToDashboard()" qid="p-class-success-2" #close>
+                <i class="nemo-font nemo-cross" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_PARENT_DASHBOARD&apos; | translate }}</span>
+            </a>
+p-class-success-3
+<a href="javascript:void(0);" class="btn btn-main-color-1-bordered go-button d-flex align-items-center justify-content-center enabled" (click)="navigateToDashboard()" qid="p-class-success-3" role="button">
+                                    {{&apos;PARENT.CHILD_SUCCESS.GO_TO_DASHBOARD&apos; | translate }} <i class="fa fa-angle-right ml-2 font-weight-bold"></i>
+                                </a>
+
+
+******************************  /create-child.template.html  **************************************
+create-child-1
+<a target="_blank" [attr.href]="onboardingBaseUrl + &apos;help&apos;" qid="create-child-1">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_HELP_PAGE&apos; | translate }}</span>
+            </a>
+create-child-2
+<a href="javascript:void(0);" (click)="navigateToDashboard(true)" qid="create-child-2" #close>
+                <i class="nemo-font nemo-cross" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_PARENT_DASHBOARD&apos; | translate }}</span>
+            </a>
+
+
+******************************  /dashboard.template.html  **************************************
+'pdash-child-' + i
+<a href="javascript:void(0);" *ngfor="let child of childrenData; let i=index" [attr.qid]="&apos;pdash-child-&apos; + i" class="d-flex align-items-center child-details" (click)="navigateToChildDetails(child)">
+                                <i class="child-circle nemo-font nemo-profile d-flex align-items-center justify-content-center profile-icon"></i>
+                                <div class="d-flex flex-wrap flex-column">
+                                    <div class="full-name ml-2">{{child.profile.firstName + &apos; &apos; + child.profile.lastName}}</div>
+                                    <div class="username ml-2">{{child.profile.username}}</div>
+                                </div>
+                        </a>
+parent-dash-1
+<a role="button" href="javascript:void(0);" class="btn btn-main-color-1-bordered add-button d-flex align-items-center justify-content-center" (click)="navigateToCreateChild()" qid="parent-dash-1">
+                            <i class="fa fa-plus"></i> {{&apos;PARENT.DASHBOARD.ADD_CHILD&apos; | translate }}
+                        </a>
+parent-dash-3
+<a href="javascript:void(0);" class="btn btn-main-color-1-bordered add-button d-flex justify-content-center enabled" (click)="logOut()" qid="parent-dash-3" role="button">
+                                        {{&apos;PARENT.DASHBOARD.CLMS_LOG_OUT&apos; | translate }}
+                                        <i class="fa fa-angle-right ml-2 font-weight-bold"></i>
+                                    </a>
+
+
+******************************  /edit-child-profile.template.html  **************************************
+cEdit-1
+<a class="back-link" href="javascript:void(0);" qid="cEdit-1" (click)="navigateBack()">
+                        <i class="fa fa-angle-left mr-2"></i>{{&apos;PARENT.EDIT_CHILD_PROFILE.BACK&apos; | translate }}
+                    </a>
+<div class="input-group">
+                                            <input [attr.placeholder]="&apos;PARENT.EDIT_CHILD_PROFILE.FIRST_NAME_PLACEHOLDER&apos; | translate" qid="cEdit-1" type="text" class="form-control" [(ngmodel)]="childFormDetails.firstName" #firstname="ngModel" name="firstName" id="firstName" required>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text error" *ngif="firstName.hasError(&apos;required&apos;)">
+                                                    <i class="nemo-font nemo-warning" aria-hidden="true"></i>
+                                                </span>
+                                                <span class="input-group-text valid" *ngif="firstName.valid &amp;&amp; firstName.dirty">
+                                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </div> 
+<div class="input-group">
+                                            <input [attr.placeholder]="&apos;PARENT.EDIT_CHILD_PROFILE.LAST_NAME_PLACEHOLDER&apos; | translate" qid="cEdit-2" type="text" class="form-control" [(ngmodel)]="childFormDetails.lastName" #lastname="ngModel" name="lastName" id="lastName" required>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text error" *ngif="lastName.hasError(&apos;required&apos;)">
+                                                    <i class="nemo-font nemo-warning" aria-hidden="true"></i>
+                                                </span>
+                                                <span class="input-group-text valid" *ngif="lastName.valid &amp;&amp; lastName.dirty">
+                                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </div> 
+<div class="input-group">
+                                            <input type="text" [(ngmodel)]="childFormDetails.country" #country="ngModel" required name="country" id="country" class="country-feild" autocomplete="off" (input)="onCountryInput(childFormDetails.country)" (keydown)="keyDownListener($event)" (blur)="closeFilterList($event.target.value)" (focusout)="focusOut($event)" [attr.placeholder]="&apos;PARENT.EDIT_CHILD_PROFILE.COUNTRY_PLACEHOLDER&apos; | translate" qid="cEdit-4">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text error" *ngif="country.hasError(&apos;required&apos;)">
+                                                    <i class="nemo-font nemo-warning" aria-hidden="true"></i>
+                                                </span>
+                                                <span class="input-group-text valid" *ngif="country.valid &amp;&amp; country.dirty">
+                                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                            <ul *ngif="showList &amp;&amp; filteredCountries.length" class="list-unstyled dropdown-items-list">
+                                                <li *ngfor="let countryObj of filteredCountries; let i = index;">
+                                                    <a href="javascript:void(0)" (click)="selectCountry(countryObj); showList = false;" [attr.qid]="&apos;cEdit-5-&apos;+i">{{countryObj.country}}</a>
+                                                </li>
+                                            </ul>
+                                        </div> 
+
+
+******************************  /join-class.template.html  **************************************
+p-join-class-1
+<a target="_blank" [attr.href]="onboardingBaseUrl + &apos;help&apos;" qid="p-join-class-1">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_HELP_PAGE&apos; | translate }}</span>
+            </a>
+p-join-class-2
+<a href="javascript:void(0);" (click)="navigateBack()" qid="p-join-class-2" #close>
+                <i class="nemo-font nemo-cross" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_PARENT_DASHBOARD&apos; | translate }}</span>
+            </a>
+<button type="submit" [ngclass]="{&apos;submit-loader-btn&apos; : showClassKeyCheckLoader, &apos;disabled&apos; : activateClassKeyForm.invalid || showClassKeyCheckLoader }" class="btn btn-main-color-1-bordered add-button d-flex align-items-center justify-content-center" [attr.aria-disabled]="activateClassKeyForm.invalid || showClassKeyCheckLoader">
+                                            {{&apos;PARENT.CLASS.JOIN_CLASS&apos; | translate }}
+                                            <i class="fa fa-angle-right" *ngif="!showClassKeyCheckLoader" aria-hidden="true"></i>
+                                            <span *ngif="showClassKeyCheckLoader">
+                                                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                                                <span class="sr-only">{{&apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate}}</span>
+                                            </span>
+                                        </button>
+p-join-class-5
+<a href="javascript:void(0);" class="btn btn-main-color-1-bordered add-button d-flex align-items-center justify-content-center enabled" (click)="navigateToDashboard()" qid="p-join-class-5" role="button">
+                                    {{&apos;PARENT.CLASS.BACK_TO_DASHBOARD&apos; | translate }}
+                                    <i class="fa fa-angle-right ml-2 font-weight-bold"></i>
+                                </a>
+p-join-class-6
+<a href="javascript:void(0);" class="btn btn-main-color-1-bordered add-button d-flex align-items-center justify-content-center enabled" (click)="navigateToChildSuccess()" qid="p-join-class-6" role="button">
+                                    {{&apos;PARENT.CLASS.NEXT&apos; | translate }}
+                                    <i class="fa fa-angle-right ml-2 font-weight-bold"></i>
+                                </a>
+<div class="input-group">
+                                            <input autocomplete="off" [(ngmodel)]="classKeyInputValue" (ngmodelchange)="addhHiphens($event)" type="text" #classkey="ngModel" required name="classKey" class="form-control class-key-input" [ngclass]="{&apos;class-key-input&apos;: !classKeyError, &apos;class-key-input-error&apos;: classKeyError}" id="classKeyInput" [attr.aria-label]=" &apos;PARENT.CLASS.SCREEN_READER.ENTER_CLASS_KEY_TO_JOIN_CLASS&apos; | translate" [attr.placeholder]=" &apos;PARENT.CLASS.SCREEN_READER.ENTER_CLASS_KEY_TO_JOIN_CLASS&apos; | translate">
+                                            <div class="input-group-append" *ngif="classKeyError">
+                                                <span class="input-group-text error">
+                                                    <i class="nemo-error-icon nemo-font nemo-warning" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </div> 
+
+
+
+
+******************************  /reset-child-password.template.html  **************************************
+cReset-1
+<a class="back-link" href="javascript:void(0);" qid="cReset-1" (click)="navigateBack()">
+                        <i class="fa fa-angle-left mr-2"></i>{{&apos;PARENT.RESET_CHILD_PASSWORD.BACK&apos; | translate }}
+                    </a>
+
+
+******************************  /view-child-details.template.html  **************************************
+cView-1
+<a class="back-link" href="javascript:void(0);" qid="cView-1" (click)="navigateToDashboard()">
+                        <i class="fa fa-angle-left mr-2"></i>{{&apos;PARENT.VIEW_CHILD.BACK&apos; | translate }}
+                    </a>
+cView-5
+<a class="add-button class-add" href="javascript:void(0);" qid="cView-5" (click)="navigateToAddClass()">
+                            <i class="fa fa-plus"></i> {{&apos;PARENT.VIEW_CHILD.ADD_CLASS&apos; | translate }}
+                        </a>
+cView-6
+<a class="add-button" href="javascript:void(0);" qid="cView-6" (click)="navigateToAddMaterial()">
+                            <i class="fa fa-plus"></i> {{&apos;PARENT.VIEW_CHILD.ADD_MATERIAL&apos; | translate }}
+                        </a>
+
+
+******************************  /welcome.template.html  **************************************
+parent-wlcm-1
+<a href="javascript:void(0);" class="btn btn-main-color-1-bordered add-button d-flex align-items-center justify-content-center enabled" (click)="navigateToAddChild()" qid="parent-wlcm-1" role="button">
+                                {{&apos;PARENT.WELCOME.GO_TO_DASHBOARD&apos; | translate }} <i class="fa fa-angle-right ml-2 font-weight-bold"></i>
+                            </a>
+
+
+******************************  /common-header.template.html  **************************************
+cHeader-1
+<a qid="cHeader-1" class="navbar-brand mr-auto" (click)="navigateToDashboard()" href="javascript:void(0);">
+            <img src="./../../../../assets/img/cup-logo.svg" class="brand-img" alt="{{ &apos;TEACHER._COMMON_ACROSS_PAGES.HEADER.SCREEN_READER.CAMBRDIGE_LOGO&apos; | translate }}">
+        </a>
+cHeader-2
+<a qid="cHeader-2" class="dropdown-toggle nav-link d-flex align-items-center justify-content-center" data-toggle="dropdown" href="javascript:void(0)" role="button" id="dropdownMenuLink" aria-haspopup="true" aria-expanded="false">
+                <i class="nemo-font nemo-profile"></i>
+                </a>
+cHeader-4
+<a qid="cHeader-4" class="dropdown-item myProfileName d-flex align-items-center justify-content-center">
+                    <i class="nemo-font nemo-profile"></i>
+                    <span class="userName mx-1">{{userProfileData?.firstName}}</span>
+                    <i class="fa fa-angle-up"></i>
+                </a>
+
+
+******************************  /footer.template.html  **************************************
+cFooter-6
+<a qid="cFooter-6" href="javascript:void(0);" (click)="navigateToOnboardingApp(&apos;help&apos;)" class="btn btn-main-1 btn-help">
+        <i class="fa fa-question-circle-o"></i>{{ &apos;_COMMON_ACROSS_MODULES.FOOTER.HELP&apos; | translate }}
+    </a>
+cFooter-7
+<a qid="cFooter-7" class="dropdown-toggle" href="javascript:void(0)" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [attr.aria-label]="languages.get(currentLang[0])">
+            <i class="nemo-font nemo-language align-middle"></i>
+            <span class="font-xs"> {{currentLang[1] }} </span>
+        </a>
+
+
+
+
+
+
+
+
+******************************  /resource-bank.template.html  **************************************
+'rb-1-' + i
+<a class="download-btn btn btn-main-1" download [attr.href]="item.downloadUrl" [attr.qid]="&apos;rb-1-&apos; + i" [attr.aria-label]="&apos;SHARED.RESOURCE_BANK.SCREEN_READER.DOWNLOAD&apos; | translate:{resource: item.name}">
+              <img class="nemo-download" src="./../../../../assets/svg/rb-download.svg" alt aria-hidden="true">{{&apos;SHARED.RESOURCE_BANK.DOWNLOAD&apos; | translate}}
+            </a>
+
+
+
+
+******************************  /activate-material-for-student.template.html  **************************************
+act-material-1
+<a *ngif="!isProductEntitled" class="back-link d-flex align-items-center" href="javascript:void(0);" qid="act-material-1" (click)="navigateBack()">
+                        <i class="fa fa-angle-left mr-2"></i>{{&apos;TEACHER.ACTIVATE.BACK&apos; | translate }}
+                    </a>
+act-material-3
+<button type="submit" [ngclass]="{ &apos;submit-loader-btn&apos; : showActivationKeyCheckLoader, &apos;disabled&apos; : activateProductForm.invalid  || showActivationKeyCheckLoader }" qid="act-material-3" class="btn btn-main-color-1-bordered activate-button d-flex align-items-center justify-content-center" [attr.aria-disabled]="activateProductForm.invalid || showActivationKeyCheckLoader">
+                                            {{&apos;TEACHER.ACTIVATE.ACTIVATE_MATERIAL&apos; | translate }}
+                                            <ng-container *ngif="showActivationKeyCheckLoader">
+                                                <i class="fa fa-spinner fa-spin ml-2" aria-hidden="true"></i>
+                                                <span class="sr-only">
+                                                    {{&apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate}}
+                                                </span>
+                                            </ng-container>
+                                        </button>
+act-material-4
+<a href="javascript:void(0);" *ngif="!isNewChild" class="dashboard-btn btn btn-main-color-1-bordered text-center mt-5" (click)="navigateBack()" qid="act-material-4" role="button">
+                                <i class="fa fa-angle-left mr-2 font-weight-bold"></i>
+                                {{(returnApp == &apos;class&apos;?&apos;TEACHER.ACTIVATE.BACK_TO_CLASS&apos;:&apos;TEACHER.ACTIVATE.BACK_TO_DASHBOARD&apos;) | translate }}
+                            </a>
+<div class="input-group">
+                                            <input autocomplete="off" [(ngmodel)]="activationCode" (ngmodelchange)="addhHiphens($event)" type="text" #classkey="ngModel" required name="activationCode" class="form-control prduct-key-input" [ngclass]="{&apos;error&apos;: activationCodeError.value }" id="ActivationKeyInput" qid="act-material-2" [attr.aria-label]=" &apos;TEACHER.ACTIVATE.SCREEN_READER.ENTER_ACTIVATION_CODE_GIVEN_IN_BOOK&apos; | translate" [attr.placeholder]=" &apos;TEACHER.ACTIVATE.SCREEN_READER.ENTER_ACTIVATION_CODE_GIVEN_IN_BOOK&apos; | translate">
+                                            <div class="input-group-append" *ngif="activationCodeError.value">
+                                                <span class="input-group-text error">
+                                                    <i class="nemo-error-icon nemo-font nemo-warning" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                        </div> 
+
+
+******************************  /class.template.html  **************************************
+<a target="_blank" [attr.href]="onboardingBaseUrl + &apos;help&apos;">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_HELP_PAGE&apos; | translate }}</span>
+            </a>
+<a href="javascript:void(0);" (click)="showLoader()"> 
+                <i class="nemo-font nemo-cross" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_TEACHER_DASHBOARD&apos; | translate }}</span>
+            </a>
+
+
+******************************  /create-class-modal.template.html  **************************************
+createModal-1
+<a class="back-icon pr-4" [attr.aria-label]="&apos;TEACHER.DASHBOARD.BACK_SCREEN_LABEL&apos; | translate" qid="createModal-1" href="javascript:void(0)" (click)="closeModal()"><i aria-hidden="true" class="fa fa-angle-left"></i></a>
+createModal-11
+<a class="back-icon pr-4" [attr.aria-label]="&apos;TEACHER.DASHBOARD.BACK_SCREEN_LABEL&apos; | translate" href="javascript:void(0)" qid="createModal-11" (click)="addClassData.active = &apos;class&apos;" [ngclass]="{disabled: showLoader}"><i aria-hidden="true" class="fa fa-angle-left"></i></a>
+createModal-21
+<a (click)="clearSearch()" qid="createModal-21" class="d-flex align-items-center">
+                        <i class="nemo-font nemo-refresh"></i>
+                        <span class="clear pl-1">{{&apos;TEACHER.DASHBOARD.CLEAR&apos; | translate}}</span>
+                    </a>
+createModal-15
+<button class="btn-add" (click)="onClickAddProductButton()" qid="createModal-15" [ngclass]="{disabled: showLoader}" [disabled]="showLoader">
+                    {{(addClassData.data.product ? &apos;TEACHER.DASHBOARD.ADD_ONE_PRODUCT&apos; :&apos;TEACHER.DASHBOARD.ADD_LATER&apos;) | translate}}
+                    <span *ngif="showLoader">
+                        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                        <span class="sr-only">{{&apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate}}</span>
+                    </span>
+                </button>
+<div class="input-group">
+                            <input type="text" required name="classTitle" qid="createModal-3" #classtitle="ngModel" class="form-control form-control-lg" aria-describedby="Enter Class Name" [(ngmodel)]="addClassData.data.class.classTitle" [attr.placeholder]="&apos;TEACHER.DASHBOARD.CLASS_NAME_PLACEHOLDER&apos; | translate" (keyup)="trimSpaces()" maxlength="50">
+                            <div class="input-group-append" *ngif="(classTitle.dirty &amp;&amp; classTitle.hasError(&apos;required&apos;))">
+                                <span class="input-group-text error classNameError">
+                                    <i class=" nemo-font nemo-warning error" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div> 
+<div class="input-group" [owldatetimetrigger]="datePickerStartDate" [ngclass]="{&apos;error&apos;: false }">
+                            <div class="input-group-text calendar-group-text">
+                                <i class="nemo-font nemo-calendar" [ngclass]="{&apos;error&apos;: (classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;)}"></i>
+                            </div>
+                            <input [owldatetime]="datePickerStartDate" name="classStartDate" qid="createModal-4" required #classstartdate="ngModel" class="form-control form-control-lg date-picker-input" aria-describedby="Enter Class Start Date" [min]="minStartDatePossible" readonly [(ngmodel)]="addClassData.data.class.dateGroup.classStartDate">
+                            <div class="input-group-text arrow-group-text">
+                                <i class="fa fa-caret-down" [ngclass]="{&apos;error&apos;: (classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;)}"></i>
+                            </div>
+                            <owl-date-time #datepickerstartdate [pickertype]="&apos;calendar&apos;" [firstdayofweek]="1"></owl-date-time>
+                        </div> 
+<div class="input-group" [owldatetimetrigger]="datePickerEndDate" [ngclass]="{&apos;error&apos;: false }">
+                            <div class="input-group-text calendar-group-text">
+                                <i class="nemo-font nemo-calendar" [ngclass]="{&apos;error&apos;: (classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;)}"></i>
+                            </div>
+                            <input [owldatetime]="datePickerEndDate" required name="classEndDate" qid="createModal-5" #classenddate="ngModel" class="form-control form-control-lg date-picker-input" aria-describedby="Enter Class End Date" [min]="minEndDatePossible" readonly [(ngmodel)]="addClassData.data.class.dateGroup.classEndDate">
+                            <div class="input-group-text arrow-group-text">
+                                <i class="fa fa-caret-down" [ngclass]="{&apos;error&apos;:(classEndDate.dirty &amp;&amp; classEndDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;)}"></i>
+                            </div>
+                            <owl-date-time #datepickerenddate [pickertype]="&apos;calendar&apos;" [firstdayofweek]="1"></owl-date-time>
+                        </div> 
+<div data-toggle="dropdown" class="input-group mb-2 dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                                <input type="text" qid="createModal-6" [(ngmodel)]="addClassData.data.class.space.space_title" #spacename="ngModel" required name="spaceName" class="form-control form-control-lg" [attr.placeholder]="&apos;TEACHER.CREATECLASS.ENTER_YOUR_SCHOOL_INSTITUTION&apos; | translate" readonly>
+                                <div class="input-group-text arrow-group-text">
+                                    <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div> 
+<div class="search input-group ml-2" id="dropdownMenuButtonForClass" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <input type="text" class="search-input form-control" id="bundleNameForClass" qid="createModal-19" [(ngmodel)]="productSearchText" [ngmodeloptions]="{standalone: true}" placeholder="Search course materials" (input)="searchProductsHandler()" (click)="focusElementForClass()">
+                    <div class="input-group-text arrow-group-text">
+                        <i class="fa fa-search"></i>
+                    </div>
+                </div> 
+
+
+******************************  /dashboard.template.html  **************************************
+tDashboard-23
+<a class="btn btn-lg btn-main-1 btn-start-learning" (click)="navigateToStartTeachingWizard()" href="javascript:void(0)" qid="tDashboard-23">
+                                <i class="nemo-font nemo-teacher" aria-hidden="true"></i>
+                                {{ &apos;TEACHER.DASHBOARD.START_TEACHING&apos; | translate }}
+                            </a>
+<a class="btn btn-main-color-1-bordered add-button ml-auto d-flex align-items-center justify-content-center" [ngclass]="{&apos;mr-3&apos; : isAdminUser}" href="javascript:void(0);" (click)="onOpeningCreateClassModal()">
+                                        <i class="fa fa-plus mr-1"></i> {{&apos;TEACHER.DASHBOARD.NEW_CLASS&apos; | translate}}
+                                    </a>
+'tDashboard-1-'+i+j
+<a class="reactivate-class d-flex" data-toggle="modal" data-target="#editClassDetailsModal" [attr.qid]="&apos;tDashboard-1-&apos;+i+j" href="javascript:void(0);" (click)="openEditClassPopUp(teacherClass, teacherSpace.space_key)" [attr.aria-label]="&apos;TEACHER.DASHBOARD.REACTIVATE_CLASS_HEADING&apos; | translate">
+                                                                    <i class="fa fa-magic mr-1"></i>
+                                                                    <span>{{&apos;TEACHER.DASHBOARD.REACTIVATE&apos; | translate}}</span>
+                                                                </a>
+'tDashboard-2-'+i+j
+<a *ngif="teacherClass.products[0]?.model?.components else bundledClassTileBtn" class="d-flex flex-column no-underline disabled" href="javascript:void(0)" [attr.qid]="&apos;tDashboard-2-&apos;+i+j" aria-disabled="true">
+                                                                <div class="class-circle d-flex align-items-center justify-content-center">
+                                                                    <img [src]="isAbsoluteUrl(teacherClass.products[0]?.meta?.thumbnaillarge) ? teacherClass.products[0]?.meta?.thumbnaillarge : teacherClass.products[0]?.meta?.paths[&apos;public-assets&apos;] + &apos;/&apos; + teacherClass.products[0]?.meta?.thumbnaillarge" class="img-fluid" *ngif="teacherClass.products[0]?.meta?.thumbnaillarge" [alt]="teacherClass.products[0]?.meta?.thumbnaillarge" imagethumbnailupdate [productdata]="teacherClass?.products[0]?.meta">
+                                                                    <img [src]="isAbsoluteUrl(teacherClass.products[0]?.thumbnaillarge) ? teacherClass.products[0]?.thumbnaillarge : teacherClass.products[0]?.paths[&apos;public-assets&apos;] + &apos;/&apos; + teacherClass.products[0]?.thumbnaillarge" class="img-fluid" *ngif="teacherClass.products[0]?.thumbnaillarge" [alt]="teacherClass.products[0]?.thumbnaillarge" imagethumbnailupdate [productdata]="teacherClass?.products[0]">
+                                                                    <i class="nemo-font nemo-class"></i>
+                                                                    <div class="img-overlay"></div>
+                                                                </div>
+                                                                <div class="heading4">{{&apos;TEACHER.DASHBOARD.CLASS_DATA_TITLE&apos; | translate}}</div>
+                                                                <div>{{&apos;TEACHER.DASHBOARD.CLASS_TILE_DESCRIPTION&apos;| translate}}</div>
+                                                            </a>
+'tDashboard-17-'+i+j
+<a class="d-flex flex-column no-underline" href="javascript:void(0)" [attr.qid]="&apos;tDashboard-17-&apos;+i+j" (click)="navigateToClassView(teacherSpace.space_key, teacherClass.uuid, &apos;classdata&apos;)">
+                                                                    <div class="class-circle d-flex align-items-center justify-content-center">
+                                                                        <img [src]="isAbsoluteUrl(teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image) ? teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image : teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.path + &apos;/&apos; + teacherClass.products[0]?.productcode + &apos;/&apos; +teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image" class="img-fluid" *ngif="teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image" [alt]="teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.title" imagethumbnailupdate [productdata]="teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]">
+                                                                        <i class="nemo-font nemo-class"></i>
+                                                                        <div class="img-overlay"></div>
+                                                                    </div>
+                                                                    <div class="heading4">{{&apos;TEACHER.DASHBOARD.CLASS_DATA_TITLE&apos; | translate}}</div>
+                                                                    <div>{{&apos;TEACHER.DASHBOARD.CLASS_TILE_DESCRIPTION&apos;| translate}}</div>
+
+                                                                </a>
+'tDashboard-3-'+i+j
+<a *ngif="teacherClass.products[0]?.model?.components else bundledClassMarkingBtn" class="d-flex flex-column no-underline disabled" href="javascript:void(0)" [attr.qid]="&apos;tDashboard-3-&apos;+i+j" aria-disabled="true">
+                                                                <div class="class-square d-flex align-items-center justify-content-center">
+                                                                    <img [src]="isAbsoluteUrl(teacherClass.products[0]?.meta?.thumbnaillarge) ? teacherClass.products[0]?.meta?.thumbnaillarge : teacherClass.products[0]?.meta?.paths[&apos;public-assets&apos;] + &apos;/&apos; + teacherClass.products[0]?.meta?.thumbnaillarge" class="img-fluid position-absolute" *ngif="teacherClass.products[0]?.meta?.thumbnaillarge" [alt]="teacherClass.products[0]?.meta?.thumbnaillarge" imagethumbnailupdate [productdata]="teacherClass?.products[0]?.meta">
+                                                                    <img [src]="isAbsoluteUrl(teacherClass.products[0]?.thumbnaillarge) ? teacherClass.products[0]?.thumbnaillarge : teacherClass.products[0]?.paths[&apos;public-assets&apos;] + &apos;/&apos; + teacherClass.products[0]?.thumbnaillarge" class="img-fluid position-absolute" *ngif="teacherClass.products[0]?.thumbnaillarge" [alt]="teacherClass.products[0]?.thumbnaillarge" imagethumbnailupdate [productdata]="teacherClass?.products[0]">
+                                                                    <div class="d-flex align-items-center justify-content-center marking-icon-container" [ngclass]="{&apos;hasCount&apos; : teacherClass.pendingSubmissionCount, &apos;zeroCount&apos;: teacherClass.pendingSubmissionCount==0}">
+                                                                        <i class="nemo-font nemo-marking_queue"></i>
+                                                                        <span class="marking-count" *ngif="teacherClass.pendingSubmissionCount&gt;0">{{teacherClass.pendingSubmissionCount}} </span>
+                                                                    </div>
+                                                                    <div class="img-overlay"></div>
+                                                                </div>
+                                                                <div class="heading4">{{&apos;TEACHER.DASHBOARD.ASSIGNMENTS_TITLE&apos; | translate}}</div>
+                                                                <div>{{&apos;TEACHER.DASHBOARD.ASSIGNMENTS_DESCRIPTION&apos;| translate}}</div>
+                                                            </a>
+'tDashboard-16-'+i+j
+<a class="d-flex flex-column no-underline" href="javascript:void(0)" [attr.qid]="&apos;tDashboard-16-&apos;+i+j" (click)="navigateToClassView(teacherSpace.space_key, teacherClass.uuid, &apos;assignments&apos;)">
+                                                                    <div class="class-square d-flex align-items-center justify-content-center">
+                                                                        <img [src]="isAbsoluteUrl(teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image) ? teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image : teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.path + &apos;/&apos; + teacherClass.products[0]?.productcode + &apos;/&apos; +teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image" class="img-fluid" *ngif="teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image" [alt]="teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.title" imagethumbnailupdate [productdata]="teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]">
+                                                                        <div class="d-flex align-items-center justify-content-center marking-icon-container" [ngclass]="{&apos;hasCount&apos; : teacherClass.pendingSubmissionCount, &apos;zeroCount&apos;: teacherClass.pendingSubmissionCount==0}">
+                                                                            <i class="nemo-font nemo-marking_queue"></i>
+                                                                            <span class="marking-count" *ngif="teacherClass.pendingSubmissionCount&gt;0">{{teacherClass.pendingSubmissionCount}} </span>
+                                                                        </div>
+                                                                        <div class="img-overlay"></div>
+                                                                    </div>
+                                                                    <div class="heading4">{{&apos;TEACHER.DASHBOARD.ASSIGNMENTS_TITLE&apos; | translate}}</div>
+                                                                    <div>{{&apos;TEACHER.DASHBOARD.ASSIGNMENTS_DESCRIPTION&apos;| translate}}</div>
+                                                                </a>
+'tDashboard-3-'+i+j
+<a *ngif="teacherClass.products[0]?.model?.components else bundledClassMaterialBtn" class="d-flex flex-column no-underline disabled" href="javascript:void(0)" [attr.qid]="&apos;tDashboard-3-&apos;+i+j" aria-disabled="true">
+                                                                <div class="class-square stacked-images d-flex align-items-center justify-content-center">
+                                                                    <div class="stacked-image" *ngfor="let item of [1,2,3];">
+                                                                        <div>
+                                                                            <img [src]="isAbsoluteUrl(teacherClass.products[0]?.meta?.thumbnaillarge) ? teacherClass.products[0]?.meta?.thumbnaillarge : teacherClass.products[0]?.meta?.paths[&apos;public-assets&apos;] + &apos;/&apos; + teacherClass.products[0]?.meta?.thumbnaillarge" class="img-fluid position-absolute" *ngif="teacherClass.products[0]?.meta?.thumbnaillarge" [alt]="teacherClass.products[0]?.meta?.thumbnaillarge" imagethumbnailupdate [productdata]="teacherClass?.products[0]?.meta">
+                                                                            <img [src]="isAbsoluteUrl(teacherClass.products[0]?.thumbnaillarge) ? teacherClass.products[0]?.thumbnaillarge : teacherClass.products[0]?.paths[&apos;public-assets&apos;] + &apos;/&apos; + teacherClass.products[0]?.thumbnaillarge" class="img-fluid position-absolute" *ngif="teacherClass.products[0]?.thumbnaillarge" [alt]="teacherClass.products[0]?.thumbnaillarge" imagethumbnailupdate [productdata]="teacherClass?.products[0]">
+                                                                            <div class="img-overlay"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <i class="nemo-font nemo-class"> </i>
+                                                                </div>
+                                                                <div class="heading4">{{&apos;TEACHER.DASHBOARD.MATERIALS_TILE_HEADING&apos; | translate}}</div>
+                                                                <div>{{&apos;TEACHER.DASHBOARD.MATERIALS_TILE_DESCRIPTION&apos; | translate}}</div>
+                                                            </a>
+'tDashboard-'+i+j+k
+<a class="d-flex flex-column no-underline" href="javascript:void(0)" [attr.qid]="&apos;tDashboard-&apos;+i+j+k" (click)="navigateToClassView(teacherSpace.space_key, teacherClass.uuid, &apos;materials&apos;)">
+                                                                    <div class="class-square stacked-images d-flex align-items-center justify-content-center">
+                                                                        <div class="stacked-image" *ngfor="let item of [1,2,3];">
+                                                                            <div>
+                                                                                <img [src]="isAbsoluteUrl(teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image) ? teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image : teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.path + &apos;/&apos; + teacherClass.products[0]?.productcode + &apos;/&apos; +teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image" class="img-fluid" *ngif="teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.image" [alt]="teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]?.title" imagethumbnailupdate [productdata]="teacherClass.bundles[teacherClass.products[0][&apos;bundle-codes&apos;]]">
+                                                                                <div class="img-overlay"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <i class="nemo-font nemo-class"> </i>
+                                                                    </div>
+                                                                    <div class="heading4">{{&apos;TEACHER.DASHBOARD.MATERIALS_TILE_HEADING&apos; | translate}}</div>
+                                                                    <div>{{&apos;TEACHER.DASHBOARD.MATERIALS_TILE_DESCRIPTION&apos; | translate}}</div>
+                                                                </a>
+'tDashboard-1-'+i+j
+<a class="reactivate-class d-flex" data-toggle="modal" data-target="#editClassDetailsModal" [attr.qid]="&apos;tDashboard-1-&apos;+i+j" href="javascript:void(0);" (click)="openEditClassPopUp(teacherClass, teacherSpace.space_key)" [attr.aria-label]="&apos;TEACHER.DASHBOARD.REACTIVATE_CLASS_HEADING&apos; | translate">
+                                                                        <i class="fa fa-magic mr-1"></i>
+                                                                        <span>{{&apos;TEACHER.DASHBOARD.REACTIVATE&apos; | translate}}</span>
+                                                                    </a>
+tDashboard-32
+<a (click)="clearSearch()" qid="tDashboard-32" class="d-flex">
+                                        <i class="nemo-font nemo-refresh"></i>
+                                        <span class="clear pl-1">{{&apos;TEACHER.DASHBOARD.CLEAR&apos; | translate}}</span>
+                                    </a>
+tDashboard-25
+<a class="d-flex align-items-center toggable-btn" href="javascript:void(0)" data-toggle="collapse" qid="tDashboard-25" [attr.data-target]="&apos;#courseMaterialCollapse1&apos;" [attr.aria-expanded]="isTeacherTrainingExpanded" [attr.aria-controls]="&apos;courseMaterialCollapse1&apos;" (click)="changeTeacherTrainingState()">
+                                        <h2 class="heading2 d-flex align-items-center">
+                                            <i class="nemo-font nemo-teacher-training mr-2" aria-hidden="true"></i>
+                                            {{&apos;TEACHER.DASHBOARD.TRAINING_COURSES&apos; | translate}}
+                                        </h2>
+                                    </a>
+'tDashboard-26-'+i
+<a (click)="navigateToBundleView(bundle[&apos;bundle-code&apos;])" href="javascript:void(0);" [attr.qid]="&apos;tDashboard-26-&apos;+i">
+                                                        <img class="img-fluid" [src]="isAbsoluteUrl(bundle?.image)?bundle?.image : bundle?.path + &apos;/&apos; + getOLPProductCode(bundle.products) + &apos;/&apos; + bundle?.image" *ngif="bundle?.image" [alt]="bundle?.title" imagethumbnailupdate [productdata]="bundle">
+                                                        <div class="no-image-container" *ngif="!bundle?.image"></div>
+                                                        <p class="heading4">{{bundle.title}}</p>
+                                                    </a>
+tDashboard-22
+<a qid="tDashboard-22" class="activateBtn btn btn-main-color-1-bordered px-3 d-flex align-items-center justify-content-center my-2" data-toggle="modal" [attr.aria-disabled]="isSuperAdminUser || (isAdminUser &amp;&amp; selectedToggleSwitch === &quot;admin&quot;)" [ngclass]="{&quot;disabled&quot; : isSuperAdminUser || (isAdminUser &amp;&amp; selectedToggleSwitch === &quot;admin&quot;)}" [attr.data-target]="isSuperAdminUser || (isAdminUser &amp;&amp; selectedToggleSwitch === &apos;admin&apos;) ? &apos;null&apos; : &apos;#gated-component-modal&apos;" (click)="openGatedComponentModal()" href="javascript:void(0);">
+                                            <i class="fa fa-plus mr-2"></i> {{&apos;TEACHER.DASHBOARD.ACTIVATE_MATERIAL&apos; | translate}}
+                                        </a>
+<a (click)="navigateToBundleView(bundle[&apos;bundle-code&apos;])" href="javascript:void(0);">
+                                                        <img class="img-fluid" [src]="isAbsoluteUrl(bundle?.image) ? bundle?.image : bundle?.path + &apos;/&apos; + getOLPProductCode(bundle.products) + &apos;/&apos; + bundle?.image" *ngif="bundle?.image" [alt]="bundle?.title" imagethumbnailupdate [productdata]="bundle">
+                                                        <div class="no-image-container" *ngif="!bundle?.image"></div>
+                                                        <p class="heading4">{{bundle.title}}</p>
+                                                    </a>
+tDashboard-35
+<a (click)="clearSearch()" qid="tDashboard-35" class="d-flex">
+                                                <i class="nemo-font nemo-refresh"></i>
+                                                <span class="clear pl-1">{{&apos;TEACHER.DASHBOARD.CLEAR&apos; | translate}}</span>
+                                            </a>
+<button class="btn btn-main-1 btn-lg btn-add-product" (click)="addProductToClass()" [ngclass]="{&apos;disabled&apos; : !selectedBundle}">
+                                                    {{&apos;TEACHER.DASHBOARD.ADD&apos; | translate}}
+                                                    <i class="fa fa-spinner fa-spin" aria-hidden="true" *ngif="showAddProductLoader"></i>
+                                                </button>
+tDashboard-15
+<button class="btn btn-main-1 btn-lg" qid="tDashboard-15" [ngclass]="{&apos;disabled&apos; : editClassForm.invalid || editClassSpinner}">
+                        <span class="text-uppercase mb-0" *ngif="selectedClass.isExpired else saveButton">{{&apos;TEACHER.DASHBOARD.REACTIVATE&apos; | translate }}</span>
+                        <ng-template #savebutton>{{&apos;TEACHER.DASHBOARD.SAVE_SMALL&apos; | translate }}</ng-template>
+
+                        <i class="fa fa-spinner fa-spin" aria-hidden="true" *ngif="editClassSpinner"></i>
+                    </button>
+tDashboard-19
+<button class="btn btn-main-1 btn-lg mb-2 text-left" [ngclass]="{&apos;disabled&apos;: selectedAssignmentModal?.class?.class?.isExpired}" href="javascript:void(0);" (click)="navigateToCreateAssignment()" [attr.aria-label]="&apos;TEACHER.DASHBOARD.CREATE_NEW_ASSIGNMENT&apos; | translate" qid="tDashboard-19">
+                        <i class="fa fa-plus px-2" aria-hidden="true"></i>
+                        <span> {{ &apos;TEACHER.DASHBOARD.CREATE_NEW_ASSIGNMENT&apos; | translate }} </span>
+                    </button>
+tDashboard-16
+<button class="btn btn-main-1 btn-lg mb-2 text-left review-assignment" href="javascript:void(0);" [attr.aria-label]="&apos;TEACHER.DASHBOARD.REVIEW_ASSIGNMENT&apos; | translate" qid="tDashboard-16" (click)="navigateToReviewAssignments()">
+                        <i class="nemo-font nemo-edit-pencil px-2" aria-hidden="true"></i>
+                        <span> {{ &apos;TEACHER.DASHBOARD.REVIEW_ASSIGNMENT&apos; | translate }} </span>
+                    </button>
+tDashboard-17
+<button class="btn btn-main-1 btn-lg mb-2 text-left" data-dismiss="modal" (click)="navigateToMarking()" href="javascript:void(0);" [attr.aria-label]="&apos;TEACHER.DASHBOARD.MARKING_QUEUE&apos; | translate" qid="tDashboard-17">
+                        <i class="nemo-font nemo-marking_queue px-2" aria-hidden="true"></i>
+                        <span> {{ &apos;TEACHER.DASHBOARD.MARKING_QUEUE&apos; | translate }} <span *ngif="selectedAssignmentModal?.class?.pendingSubmissionCount&gt;0">({{selectedAssignmentModal?.class?.pendingSubmissionCount}}) </span> </span>
+                    </button>
+'institution-req-' + i
+<a class="d-flex pending" href="javascript: void(0);" (click)="showInstitutionRequest[i]=!showInstitutionRequest[i]" [ngclass]="{&apos;disabled&apos;: teacherSpacesCount === 0}" [attr.qid]="&apos;institution-req-&apos; + i">
+                <span>
+                    <img src="./../../../../assets/img/pending.png" alt>
+                    {{&apos;TEACHER.DASHBOARD.PENDING&apos; | translate}}
+                </span>
+                <span class="ml-auto" *ngif="teacherSpacesCount !== 0">
+                    <i class="fa fa-chevron-down" aria-hidden="true" *ngif="!showInstitutionRequest[i]"></i>
+                    <i class="fa fa-chevron-up" aria-hidden="true" *ngif="showInstitutionRequest[i]"></i>
+                </span>
+            </a>
+<div class="search input-group" id="dropdownMenuButtonForLibrary1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <input type="text" class="search-input form-control" id="bundleName1" [(ngmodel)]="globalSearchText" [ngmodeloptions]="{standalone: true}" qid="tDashboard-30" placeholder="Search course materials" (input)="searchProductsHandler(&apos;1&apos;)" (click)="focusElement(&apos;1&apos;)">
+                                    <div class="input-group-text arrow-group-text">
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                </div> 
+<div class="search input-group" id="dropdownMenuButtonForLibrary2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <input type="text" class="search-input form-control" id="bundleName2" [(ngmodel)]="globalSearchText" [ngmodeloptions]="{standalone: true}" qid="tDashboard-33" placeholder="Search course materials" (input)="searchProductsHandler(&apos;2&apos;)" (click)="focusElement(&apos;2&apos;)">
+                                            <div class="input-group-text arrow-group-text">
+                                                <i class="fa fa-search"></i>
+                                            </div>
+                                        </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: classTitle.dirty &amp;&amp; classTitle.hasError(&apos;required&apos;), &apos;disabled&apos;: selectedClass.isExpired }">
+                            <input type="text" [(ngmodel)]="selectedClass.title" #classtitle="ngModel" required name="classTitle" class="form-control form-control-lg" placeholder="ex: CS 2 English Literature" maxlength="50" qid="tDashboard-11" id="classTitle" [readonly]="selectedClass.isExpired">
+                            <div class="input-group-append" *ngif="(classTitle.dirty &amp;&amp; classTitle.hasError(&apos;required&apos;))">
+                                <span class="input-group-text error classNameError">
+                                    <i class="fa fa-times-circle-o error" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div> 
+<div class="input-group" [owldatetimetrigger]="datePickerStartDate" [ngclass]="{&apos;error&apos;: classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;) || dateGroup.hasError(&apos;dateValidator&apos;), &apos;disabled&apos;: selectedClass.isExpired}">
+                            <div class="input-group-text calendar-group-text">
+                                <i class="nemo-font nemo-calendar" aria-hidden="true" [ngclass]="{&apos;error&apos;: (classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;) }"></i>
+                            </div>
+                            <input [owldatetime]="datePickerStartDate" [(ngmodel)]="selectedClass.startDate" name="classStartDate" #classstartdate="ngModel" required class="form-control form-control-lg date-picker-input" readonly qid="tDashboard-12" id="editClassStartDate">
+                            <div class="input-group-text arrow-group-text">
+                                <i class="fa fa-caret-down" aria-hidden="true" [ngclass]="{&apos;error&apos;: (classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;) }"></i>
+                            </div>
+                            <owl-date-time #datepickerstartdate [disabled]="selectedClass.isExpired" [pickertype]="&apos;calendar&apos;" [firstdayofweek]="1" [pickermode]="&apos;dialog&apos;"></owl-date-time>
+                        </div> 
+<div class="input-group" [owldatetimetrigger]="datePickerEndDate" [ngclass]="{&apos;error&apos;: classEndDate.dirty &amp;&amp; classEndDate.hasError(&apos;required&apos;) || dateGroup.hasError(&apos;dateValidator&apos;) || (selectedClass.isExpired &amp;&amp; classEndDate.hasError(&apos;owlDateTimeMin&apos;)) , &apos;success&apos;: (selectedClass.isExpired &amp;&amp; !((classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;) || (classEndDate.hasError(&apos;owlDateTimeMin&apos;)))) }">
+                            <div class="input-group-text calendar-group-text">
+                                <i class="nemo-font nemo-calendar" aria-hidden="true" [ngclass]="{&apos;error&apos;: (classEndDate.dirty &amp;&amp; classEndDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;) || (selectedClass.isExpired &amp;&amp; classEndDate.hasError(&apos;owlDateTimeMin&apos;)) , &apos;success&apos;: (selectedClass.isExpired &amp;&amp; !((classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;) || (classEndDate.hasError(&apos;owlDateTimeMin&apos;)))) }"></i>
+                            </div>
+                            <input [owldatetime]="datePickerEndDate" [(ngmodel)]="selectedClass.endDate" #classenddate="ngModel" required name="classEndDate" class="form-control form-control-lg date-picker-input" [min]="minEndDatePossible" readonly qid="tDashboard-13" id="editClassEndDate">
+                            <div class="input-group-text arrow-group-text">
+                                <i class="fa fa-check-circle-o success" aria-hidden="true" *ngif="(selectedClass.isExpired &amp;&amp; !((classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;) || (classEndDate.hasError(&apos;owlDateTimeMin&apos;)))) else errorIcon"></i>
+                                <ng-template #erroricon>
+                                    <i class="fa fa-caret-down" aria-hidden="true" [ngclass]="{&apos;error&apos;: (classStartDate.dirty &amp;&amp; classStartDate.hasError(&apos;required&apos;)) || dateGroup.hasError(&apos;dateValidator&apos;) || (selectedClass.isExpired &amp;&amp; classEndDate.hasError(&apos;owlDateTimeMin&apos;)) }"></i>
+                                </ng-template>
+                            </div>
+                            <owl-date-time #datepickerenddate [pickertype]="&apos;calendar&apos;" [firstdayofweek]="1" [pickermode]="&apos;dialog&apos;"></owl-date-time>
+                        </div> 
+
+
+******************************  /digital-component.template.html  **************************************
+dgt-1
+<a [attr.href]="componentMetaData?.model[&apos;assets-refs&apos;]?.download[0]?.url ? (componentMetaData?.paths[&apos;public-assets&apos;] + &apos;/&apos; + componentMetaData?.model[&apos;assets-refs&apos;]?.download[0]?.url) : null" download class="download-link btn btn-main-1 btn-lg" [ngclass]="{&apos;disabled&apos;: !componentMetaData?.model[&apos;assets-refs&apos;]?.download[0]?.url}" qid="dgt-1">
+                                        <i class="nemo-font nemo-download"></i> {{&apos;TEACHER.DIGITAL_COMPONENT.DOWNLOAD&apos; | translate }}
+                                    </a>
+'dgt-3-' + i
+<a (click)="sendDownloadEvent(downloadModule)" [attr.href]="componentMetaData?.paths[&apos;public-assets&apos;] + &apos;/&apos; + downloadModule.url" download class="download-link download-installer-download-button btn btn-main-1 btn-lg" *ngif="downloadModule.url else downloadComingSooncontainer" [attr.qid]="&apos;dgt-3-&apos; + i">
+                                                    <i class="nemo-font nemo-download"></i> {{&apos;TEACHER.DIGITAL_COMPONENT.DOWNLOAD&apos; | translate }}
+                                                </a>
+
+
+******************************  /do-not-have-school-key.template.html  **************************************
+do-not-have-school-key-1
+<a class="btn btn-lg btn-icon btn-white-bg my-4" [routerlink]="[&apos;./../independentteacher&apos;]" qid="do-not-have-school-key-1">
+        {{ &apos;TEACHER.DO_NOT_HAVE_SCHOOL_KEY.NEXT&apos; | translate }}
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </a>
+
+
+******************************  /gated-modal.template.html  **************************************
+gModal-1
+<a class="activate-help-icon" qid="gModal-1" href="javascript:void(0)" (click)="showGatedHelp=!showGatedHelp;" [attr.aria-label]="&apos;TEACHER.DASHBOARD.SCREEN_READER.HELP&apos; | translate">
+                    <i class="fa fa-question-circle-o" aria-hidden="true"></i>                    
+                </a>
+gModal-4
+<button qid="gModal-4" type="submit" [ngclass]="{&apos;submit-loader-btn&apos; : showAccessCodeCheckLoader, &apos;disabled&apos; : accessCodeForm.invalid || isActivationCodeError}" class="btn btn-main-1 btn-lg btn-add-component" [attr.aria-disabled]="accessCodeForm.invalid">
+                                {{ &apos;TEACHER.DASHBOARD.ACTIVATE&apos; | translate }}
+                                <span *ngif="showAccessCodeCheckLoader">
+                                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                                    <span class="sr-only">{{ &apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate }}</span>
+                                </span>
+                            </button>
+<div class="input-group" [ngclass]="{&apos;error&apos;: isActivationCodeError } ">
+                                <input qid="gModal-3" autocomplete="off" [(ngmodel)]="accessCodeValue" (ngmodelchange)="addhHiphens($event)" type="text" #accesscode="ngModel" required name="accessCode" class="form-control form-control-lg" id="accessCodeInput" aria-describedby="Enter Access Code">
+                                <div class="error-icon" *ngif="isActivationCodeError">
+                                    <i class="nemo-font nemo-warning p-2" aria-hidden="true"></i>
+                                </div>
+                            </div> 
+
+
+
+
+
+
+******************************  /product-details.template.html  **************************************
+'pView-3-'+k
+<a *ngif="!digitalComponent.meta[&apos;not-published&apos;] &amp;&amp; (digitalComponent.activation.free.hasOwnProperty(&apos;teacher&apos;) || (digitalComponent.activation.gated.hasOwnProperty(&apos;teacher&apos;) &amp;&amp; ( digitalComponent.activation[&apos;prior-to-activitation-rules&apos;].visibility==&apos;disabled&apos; || isActivated(digitalComponent[&apos;dls-product&apos;].code))))" class="media mb-4" href="javascript:void(0);" [attr.qid]="&apos;pView-3-&apos;+k" (click)="navigateToDigitalComponents(digitalComponent)">
+                                    <div class="class-square mr-3">
+                                        <img class="img" *ngif="bundle?.image" [src]="isAbsoluteUrl(bundle?.image) ? bundle?.image :  bundle?.path + &apos;/&apos; + getOLPProductCode(bundle.products) + &apos;/&apos; + bundle?.image" imagethumbnailupdate [productdata]="bundle" [alt]="bundle?.title" aria-hidden="true">
+                                        <div class="img-overlay" *ngif="bundle?.image"></div>
+                                        <div class="no-image-container" *ngif="!bundle?.image"></div>
+                                        <i [ngclass]="digitalComponent[&apos;ext-product&apos;].type != &apos;imgbook&apos; ? digitalComponent?.meta?.icon : &apos;nemo-font nemo-presentation&apos;" class="img-icon" *ngif="digitalComponent.meta?.icon != &apos;nemo-font nemo-collaboration-plus&apos; || digitalComponent.meta?.icon != &apos;nemo-font nemo-mock-test&apos;" aria-hidden="true"></i>
+                                        <img class="svg-icon" src="./../../../../assets/svg/collaborationPlus.svg" *ngif="digitalComponent.meta?.icon == &apos;nemo-font nemo-collaboration-plus&apos;">
+                                        <img class="svg-icon" src="./../../../../assets/svg/mock-test.svg" alt *ngif="digitalComponent.meta?.icon == &apos;nemo-font nemo-mock-test&apos;">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="heading mt-0">{{digitalComponent?.meta?.title}}</div>
+                                        <div class="font-xs mb-1">{{digitalComponent?.meta[&quot;short-description&quot;]}}</div>
+                                    </div>
+                                
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+pview-4
+<button class="btn btn-main-1 btn-lg start-course-button d-flex align-items-center justify-content-center" qid="pview-4" (click)="navigateToTeacherTrainingOLP(digitalComponent)">
+                                            <span *ngif="!flags.hasUserStartedProduct">{{&apos;TEACHER.PRODUCT_DETAIL.START_COURSE&apos; | translate }}</span>
+                                            <span *ngif="flags.hasUserStartedProduct">{{&apos;TEACHER.PRODUCT_DETAIL.BACK_TO_COURSE&apos; | translate }}</span>
+                                            
+                                            <i class="fa fa-spinner fa-spin ml-3" *ngif="startCourseLoader" aria-hidden="true"></i>
+                                            <i class="fa fa-angle-right pl-3" *ngif="!startCourseLoader" aria-hidden="true"></i>
+                                        </button>
+
+
+******************************  /school-teacher-journey.template.html  **************************************
+sc-tea-jou-1
+<a (click)="navigateToStep()" class="mt-4" href="javascript:void(0);" [hidden]="[13,10].indexOf(step)&gt;-1" qid="sc-tea-jou-1">
+	        <i class="fa fa-angle-left mr-2" aria-hidden="true"></i>{{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.BACK&apos; | translate }}
+	    </a>
+indep-teacher-4
+<button class="btn btn-white-bg btn-lg btn-icon" (click)="startTeacherJourney()" [disabled]="!(selectedTeachingOption &amp;&amp; selectedTeachingOption !== &apos;OTHER&apos;) &amp;&amp; !(selectedTeachingOption == &apos;OTHER&apos; &amp;&amp; schoolSetup.otherDescription &amp;&amp; schoolSetup.otherDescription.length &gt; 2)" qid="indep-teacher-4">
+                        {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.NEXT&apos; | translate }}
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </button>
+indep-teacher-5
+<button class="btn btn-white-bg btn-lg btn-icon" (click)="schoolSetup.teacherCount &amp;&amp; navigateToStep(3)" [disabled]="!schoolSetup.teacherCount" qid="indep-teacher-5">
+                        {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.NEXT&apos; | translate }}
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </button>
+sc-tea-jou-2
+<button class="btn btn-lg btn-white-bg btn-icon" [ngclass]="{&apos;disabled&apos;: schoolName.invalid }" [disabled]="schoolName.invalid" (click)="navigateToStep(4)" qid="sc-tea-jou-2">
+	               {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.NEXT&apos; | translate}}
+	                <i class="fa fa-angle-right" aria-hidden="true"></i>
+	            </button>
+sc-tea-jou-4
+<button class="btn btn-lg btn-white-bg btn-icon" [ngclass]="{&apos;disabled&apos;: !isCountryValid }" [disabled]="!isCountryValid" (click)="checkCountryValid(schoolSetup.country) &amp;&amp; navigateToStep(5)" qid="sc-tea-jou-4">
+                   {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.NEXT&apos; | translate}}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+sc-tea-jou-12
+<button class="btn btn-lg btn-white-bg btn-icon" [ngclass]="{&apos;disabled&apos;: !(addressForm.valid &amp;&amp; isPostalCodeValid &amp;&amp; isRegionValid)}" (click)="isRegionValid &amp;&amp; addressForm.valid &amp;&amp; checkValidAddress()" qid="sc-tea-jou-12">
+                   {{&apos;TEACHER.CREATECLASS.NEXT&apos; | translate}}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+sc-tea-jou-13
+<button class="btn btn-lg btn-white-bg btn-icon" [ngclass]="{&apos;disabled&apos;: !(addressForm.valid &amp;&amp; isRegionValid)}" (click)="isRegionValid &amp;&amp; addressForm.valid &amp;&amp; checkValidAddress()" qid="sc-tea-jou-13">
+                   {{&apos;TEACHER.CREATECLASS.NEXT&apos; | translate}}
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+sc-tea-jou-17
+<button class="btn btn-lg btn-white-bg btn-icon" [ngclass]="{&apos;disabled&apos;: !isTelephoneValid || (schoolSetup.website?.length &amp;&amp; !isWebsiteValid) }" [disabled]="!isTelephoneValid || (schoolSetup.website?.length &amp;&amp; !isWebsiteValid)" (click)="navigateToStep(7)" qid="sc-tea-jou-17">
+	               {{&apos;TEACHER.CREATECLASS.NEXT&apos; | translate}}
+	                <i class="fa fa-angle-right" aria-hidden="true"></i>
+	            </button>
+sc-tea-jou-21
+<button class="btn btn-lg btn-white-bg btn-icon send-request" qid="sc-tea-jou-21" (click)="navigateToStep(12)">
+                      {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.NONE_OF_THESE&apos; | translate:{ schoolType: schoolType } }}
+                      <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </button>
+sc-tea-jou-22
+<button class="btn btn-lg btn-white-bordered btn-icon trns-btn mb-4" qid="sc-tea-jou-22" (click)="navigateToStep()">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                       {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.NO_THIS_IS_NOT_MY_SCHOOL&apos; | translate:{schoolType: schoolType} }}
+                    </button>
+sc-tea-jou-23
+<button class="btn btn-lg btn-white-bg btn-icon send-request mb-5" qid="sc-tea-jou-23" (click)="navigateToStep(10)">
+                       {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.YES_THIS_IS_MY_SCHOOL&apos; | translate:{schoolType: schoolType} }}
+                       <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </button>
+sc-tea-jou-24
+<button class="btn btn-lg btn-white-bg btn-icon send-request" (click)="navigateToDashboard()" qid="sc-tea-jou-24">
+                       {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.BACK_TO_HOME&apos; | translate}}
+                       <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </button>
+sc-tea-jou-25
+<button class="btn btn-lg btn-white-bordered btn-icon trns-btn mb-4" (click)="navigateToStep()" qid="sc-tea-jou-25">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                       {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.NO_THANK_YOU&apos; | translate}}
+                    </button>
+sc-tea-jou-26
+<button class="btn btn-lg btn-white-bg btn-icon send-request mb-5" (click)="schoolSetUpInDLS()" qid="sc-tea-jou-26">
+                        {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.YES_SET_THIS_SCHOOL&apos; | translate:{schoolType: schoolType} }}
+                       <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </button>
+sc-tea-jou-27
+<button class="btn btn-lg btn-white-bg btn-icon send-request" (click)="submitRequest(false)" qid="sc-tea-jou-27">
+                       {{&apos;TEACHER.SCHOOL_TEACHER_JOURNEY.YES_REQUEST&apos; | translate:{schoolType: schoolType } }}
+                       <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </button>
+<div class="input-group" [ngclass]="{&apos;error&apos;: Other.touched &amp;&amp; schoolSetup.otherDescription &amp;&amp; schoolSetup.otherDescription.length &lt; 3, &apos;valid&apos;: schoolSetup.otherDescription &amp;&amp; schoolSetup.otherDescription.length &gt; 2}">
+                        <input type="text" id="school_desc" class="input-group" maxlength="50" minlength="3" required [(ngmodel)]="schoolSetup.otherDescription" #other="ngModel" qid="indep-teacher-3" (blur)="trimSpaces(&apos;otherDescription&apos;)">
+                        <div class="input-group-append" *ngif="!Other.valid &amp;&amp; Other.touched">
+                            <span class="input-group-text error classNameError">
+                                <i class="nemo-font nemo-warning error error" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div class="input-group-append" *ngif="Other.valid">
+                            <span class="input-group-text valid field-valid">
+                                <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: !schoolName.valid &amp;&amp; schoolName.touched, &apos;valid&apos;: schoolName.valid}">
+	                        <input type="text" [(ngmodel)]="schoolSetup.
+                            name" #schoolname="ngModel" required name="schoolName" class="form-control form-control-lg" minlength="3" maxlength="50" id="school_name" autocomplete="off">
+	                        <div class="input-group-append" *ngif="!schoolName.valid &amp;&amp; schoolName.touched">
+	                            <span class="input-group-text error classNameError">
+	                                <i class="nemo-font nemo-warning error error" aria-hidden="true"></i>
+	                            </span>
+	                        </div>
+	                        <div class="input-group-append" *ngif="schoolName.valid">
+	                            <span class="input-group-text valid field-valid">
+	                                <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+	                            </span>
+	                        </div>
+	                    </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: !isCountryValid, &apos;valid&apos;: isCountryValid}">
+                            <input type="text" [(ngmodel)]="schoolSetup.country" #country="ngModel" required name="country" class="form-control form-control-lg" (input)="onCountryInput(schoolSetup.country)" maxlength="50" autocomplete="off" (blur)="closeFilterList($event.target.value)" id="school_country" qid="sc-tea-jou-3">
+                            <div class="input-group-append" *ngif="!isCountryValid">
+                                <span class="input-group-text error classNameError">
+                                    <i class="nemo-font nemo-warning error error" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="input-group-append" *ngif="isCountryValid">
+                                <span class="input-group-text valid field-valid">
+                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <ul *ngif="showList &amp;&amp; filteredCountries.length" class="list-unstyled dropdown-items-list">
+                                <li *ngfor="let countryObj of filteredCountries; let i = index;">
+                                    <a href="javascript:void(0)" (click)="selectCountry(countryObj); showList = false;" [attr.qid]="&apos;sc-tea-jo-4-&apos;+i">{{countryObj.country}}</a>
+                                </li>
+                            </ul>
+                        </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: address1.touched &amp;&amp; address1.hasError(&apos;required&apos;), &apos;valid&apos;: address1.valid}">
+                            <input type="text" [(ngmodel)]="schoolSetup.address1" #address1="ngModel" required name="address1" class="form-control form-control-lg" (blur)="trimSpaces(&apos;address1&apos;)" minlength="1" maxlength="500" id="street_address1" qid="sc-tea-jou-6" autocomplete="off">
+                            <div class="input-group-append" *ngif="address1.touched &amp;&amp; address1.hasError(&apos;required&apos;)">
+                                <span class="input-group-text error classNameError">
+                                    <i class="nemo-font nemo-warning error error" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="input-group-append" *ngif="address1.valid">
+                                <span class="input-group-text valid field-valid">
+                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: address2.touched &amp;&amp; address2.hasError(&apos;required&apos;), &apos;valid&apos;: address2.valid}">
+                            <input type="text" [(ngmodel)]="schoolSetup.address2" #address2="ngModel" name="address2" class="form-control form-control-lg" (blur)="trimSpaces(&apos;address2&apos;)" minlength="1" maxlength="500" id="street_address2" required qid="sc-tea-jou-7" autocomplete="off">
+                            <div class="input-group-append" *ngif="address2.touched &amp;&amp; address2.hasError(&apos;required&apos;)">
+                                <span class="input-group-text error classNameError">
+                                    <i class="nemo-font nemo-warning error error" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="input-group-append" *ngif="schoolSetup.address2 &amp;&amp;schoolSetup.address2.length">
+                                <span class="input-group-text valid field-valid">
+                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div> 
+<div class="input-group" [ngclass]="{ &apos;valid&apos;: address3.dirty &amp;&amp; schoolSetup.address3.length }">
+                            <input type="text" [(ngmodel)]="schoolSetup.address3" #address3="ngModel" name="classTitle" class="form-control form-control-lg" (blur)="trimSpaces(&apos;address3&apos;)" id="street_address3" maxlength="500" qid="sc-tea-jou-8" autocomplete="off">
+                            <div class="input-group-append" *ngif="schoolSetup.address3 &amp;&amp; schoolSetup.address3.length">
+                                <span class="input-group-text valid field-valid">
+                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: city.touched &amp;&amp; city.hasError(&apos;required&apos;),&apos;valid&apos;: city.valid}">
+                            <input type="text" [(ngmodel)]="schoolSetup.city" #city="ngModel" required name="city" class="form-control form-control-lg" (blur)="trimSpaces(&apos;city&apos;)" minlength="1" id="school_city" qid="sc-tea-jou-9" maxlength="500" autocomplete="off">
+                            <div class="input-group-append" *ngif="city.touched &amp;&amp; city.hasError(&apos;required&apos;)">
+                                <span class="input-group-text error classNameError">
+                                    <i class="nemo-font nemo-warning error" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="input-group-append" *ngif="city.valid">
+                                <span class="input-group-text valid field-valid">
+                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: province.touched &amp;&amp; (province.hasError(&apos;required&apos;) || !isRegionValid) &amp;&amp; regionList ,&apos;valid&apos;: province.touched &amp;&amp; isRegionValid &amp;&amp; schoolSetup.province &amp;&amp; schoolSetup.province.length}">
+                            <input type="text" [(ngmodel)]="schoolSetup.province" #province="ngModel" [attr.required]="!isRegionOptional" name="province" class="form-control form-control-lg" (blur)="regionValidation(schoolSetup.province)" id="school_region" qid="sc-tea-jou-10" maxlength="500" (input)="onRegionInput(schoolSetup.province)" autocomplete="offForProvince">
+                            <div class="input-group-append" *ngif="province.touched &amp;&amp; (province.hasError(&apos;required&apos;) || !isRegionValid) &amp;&amp; regionList">
+                                <span class="input-group-text error classNameError">
+                                    <i class="nemo-font nemo-warning error" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="input-group-append" *ngif="province.touched &amp;&amp; isRegionValid &amp;&amp; schoolSetup.province &amp;&amp; schoolSetup.province.length">
+                                <span class="input-group-text valid field-valid">
+                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <ul *ngif="showRegionList &amp;&amp; regionList.length" class="list-unstyled dropdown-items-list">
+                                <li *ngfor="let regionObj of regionList; let i = index;">
+                                    <a href="javascript:void(0)" (click)="selectRegion(regionObj)" [attr.qid]="&apos;sc-tea-jo-3-&apos;+i">{{regionObj.region}}</a>
+                                </li>
+                            </ul>
+                        </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: postalCode.touched &amp;&amp; (postalCode.hasError(&apos;required&apos;) || !isPostalCodeValid) ,&apos;valid&apos;: postalCode.touched &amp;&amp; isPostalCodeValid &amp;&amp; (!isPostalCodeOptional || (isPostalCodeOptional &amp;&amp; schoolSetup.postalCode &amp;&amp; schoolSetup.postalCode.length))}">
+                            <input type="text" [(ngmodel)]="schoolSetup.postalCode" #postalcode="ngModel" name="postalCode" class="form-control form-control-lg" maxlength="50" id="school_postal_code" qid="sc-tea-jou-11" (keyup)="validatePostal(schoolSetup.postalCode)" [attr.required]="!isPostalCodeOptional" autocomplete="off">
+                            <div class="input-group-append" *ngif="postalCode.touched &amp;&amp; !isPostalCodeValid">
+                                <span class="input-group-text error classNameError">
+                                    <i class="nemo-font nemo-warning error" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="input-group-append" *ngif="schoolSetup.postalCode &amp;&amp; postalCode.valid &amp;&amp; isPostalCodeValid">
+                                <span class="input-group-text valid field-valid">
+                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: !isTelephoneValid &amp;&amp; telephoneNumber.touched, &apos;valid&apos; : isTelephoneValid}">
+	                            <input type="text" [(ngmodel)]="tempTelephoneNumber" #telephonenumber="ngModel" name="telephoneNumber" (keyup)="telephoneNumbervalidation(tempTelephoneNumber, telephoneCode.valid)" class="form-control" required id="telephone_number" maxlength="50" qid="sc-tea-jou-15" autocomplete="off">
+	                            <div class="input-group-append" *ngif="!isTelephoneValid &amp;&amp; telephoneNumber.touched">
+	                                <span class="input-group-text error classNameError">
+	                                    <i class="nemo-font nemo-warning error" aria-hidden="true"></i>
+	                                </span>
+	                            </div>
+	                            <div class="input-group-append" *ngif="isTelephoneValid">
+	                                <span class="input-group-text valid field-valid">
+	                                    <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+	                                </span>
+	                            </div>
+	                        </div> 
+<div class="input-group" [ngclass]="{&apos;error&apos;: !isWebsiteValid &amp;&amp; schoolSetup.website?.length &amp;&amp; website.touched, &apos;valid&apos;: isWebsiteValid &amp;&amp; schoolSetup.website?.length}">
+	                        <input type="url" [(ngmodel)]="schoolSetup.website" #website="ngModel" name="website" class="form-control form-control-lg" (keyup)="validateWebsite(schoolSetup.website)" id="school_website" maxlength="50" qid="sc-tea-jou-16" autocomplete="off">
+	                        <div class="input-group-append" *ngif="!isWebsiteValid &amp;&amp; schoolSetup.website?.length &amp;&amp; website.touched">
+	                            <span class="input-group-text error classNameError">
+	                                <i class="nemo-font nemo-warning error" aria-hidden="true"></i>
+	                            </span>
+	                        </div>
+	                        <div class="input-group-append" *ngif="isWebsiteValid &amp;&amp; schoolSetup.website?.length">
+	                            <span class="input-group-text valid field-valid">
+	                                <i class="nemo-font nemo-circle-tick valid" aria-hidden="true"></i>
+	                            </span>
+	                        </div>
+	                    </div> 
+
+
+
+
+******************************  /setup-school.template.html  **************************************
+schoolSetup-1
+<a target="_blank" [attr.href]="onboardingBaseUrl + &apos;help&apos;" qid="schoolSetup-1">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_HELP_PAGE&apos; | translate }}</span>
+            </a>
+schoolSetup-2
+<a href="javascript:void(0);" (click)="navigateToDashboard()" qid="schoolSetup-2">
+                <i class="nemo-font nemo-cross" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_TEACHER_DASHBOARD&apos; | translate }}</span>
+            </a>
+schoolSetup-4
+<button class="btn btn-lg btn-white-bg btn-icon" (click)="startschoolJourney()" qid="schoolSetup-4">
+                                        {{&apos;TEACHER.SETUP_SCHOOL.NEXT&apos; | translate}}
+                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                        </button>
+
+
+******************************  /start-teaching-enter-code.template.html  **************************************
+<button type="submit" [ngclass]="{&apos;submit-loader-btn&apos; : showAccessCodeCheckLoader, &apos;disabled&apos; : accessCodeForm.invalid}" class="btn btn-lg btn-white-bg btn-icon submit-access-code" [attr.aria-disabled]="accessCodeForm.invalid">
+                        {{ &apos;TEACHER.STARTTEACHINGENTERCODE.NEXT&apos; | translate }}
+                        <i class="fa fa-angle-right" *ngif="!showAccessCodeCheckLoader" aria-hidden="true"></i>
+                        <span *ngif="showAccessCodeCheckLoader">
+                            <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                            <span class="sr-only">{{ &apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate }}</span>
+                        </span>
+                    </button>
+<div class="input-group" [ngclass]="{&apos;error&apos;: accessCodeError || alreadyJoinedError || keyHasBeenChanged} ">
+                        <input autocomplete="off" [(ngmodel)]="accessCodeValue" type="text" #accesscode="ngModel" required name="accessCode" class="form-control form-control-lg" [ngclass]="{&apos;error&apos;: accessCodeError ||  alreadyJoinedError || keyHasBeenChanged}" id="accessCodeInput" [attr.placeholder]="&apos;TEACHER.STARTTEACHINGENTERCODE.PLACEHOLDER&apos; | translate" (ngmodelchange)="accessCodeError = false; alreadyJoinedError = false; keyHasBeenChanged = false;">
+                        <div class="input-group-append" *ngif="accessCodeError || alreadyJoinedError || keyHasBeenChanged">
+                            <span class="input-group-text error">
+                                <i class="fa fa-times-circle-o error" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                    </div> 
+
+
+******************************  /start-teaching-main.template.html  **************************************
+start-teaching-main-1
+<a [routerlink]="[&apos;./../joinSchool&apos;]" qid="start-teaching-main-1"> 
+        <i class="nemo-font nemo-school-key-present page-icon" aria-hidden="true"></i>
+    </a>
+start-teaching-main-4
+<a [routerlink]="[&apos;./../donothaveschoolkey&apos;]" qid="start-teaching-main-4"> 
+            <i class="nemo-font nemo-no-school-key page-icon" aria-hidden="true"></i>
+        </a>
+
+
+
+
+******************************  /start-teaching-school-key-success.template.html  **************************************
+<button class="btn btn-lg btn-white-bg btn-icon mb-5 mt-3" (click)="navigateToDashboard()">
+                {{ &apos;TEACHER.STARTTEACHINGSCHOOLKEYSUCCESS.OK_LETS_GO&apos; | translate }}<i class="fa fa-angle-right" *ngif="!showLoader" aria-hidden="true"></i>
+            <span *ngif="showLoader">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+                <span class="sr-only">{{&apos;SCREEN_READER.PROCESSING_MESSAGE&apos; | translate}}</span>
+            </span>
+        </button>
+
+
+******************************  /start-teaching.template.html  **************************************
+start-teaching-1
+<a target="_blank" [attr.href]="onboardingBaseUrl + &apos;help&apos;" qid="start-teaching-1">
+                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_HELP_PAGE&apos; | translate }}</span>
+            </a>
+start-teaching-2
+<a href="javascript:void(0);" (click)="showLoader()" qid="start-teaching-2">
+                <i class="nemo-font nemo-cross" aria-hidden="true"></i>
+                <span class="sr-only">{{ &apos;SCREEN_READER.GO_TO_TEACHER_DASHBOARD&apos; | translate }}</span>
+            </a>
+
+
+
+
